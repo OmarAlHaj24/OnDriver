@@ -3,7 +3,6 @@ import java.util.List;
 public class IdentityManager {
     public static User currentUser;
     private static final DataManager manager = ListManager.getInstance();
-    ;
 
     public static Boolean registerAsPassenger(Passenger user) {
         if (manager.isAvailable(user.getUsername())) {
@@ -25,6 +24,9 @@ public class IdentityManager {
 
     public static Boolean loginAsPassenger(String username, String password) {
         Passenger tempPassenger = manager.getPassenger(username);
+        if(tempPassenger.getUserStatus() == UserStatus.suspended){
+            return false;
+        }
         if (tempPassenger == null) {
             return false;
         }
@@ -38,6 +40,9 @@ public class IdentityManager {
 
     public static Boolean loginAsDriver(String username, String password) {
         Driver tempDriver = manager.getDriver(username);
+        if(tempDriver.getUserStatus() == UserStatus.suspended || !tempDriver.getVerified()){
+            return false;
+        }
         if (tempDriver == null) {
             return false;
         }
