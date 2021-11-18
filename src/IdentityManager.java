@@ -24,10 +24,10 @@ public class IdentityManager {
 
     public static Boolean loginAsPassenger(String username, String password) {
         Passenger tempPassenger = manager.getPassenger(username);
-        if(tempPassenger.getUserStatus() == UserStatus.suspended){
+        if (tempPassenger == null) {
             return false;
         }
-        if (tempPassenger == null) {
+        if(tempPassenger.getUserStatus() == UserStatus.suspended){
             return false;
         }
         if (tempPassenger.getPassword().equals(password)) {
@@ -40,10 +40,10 @@ public class IdentityManager {
 
     public static Boolean loginAsDriver(String username, String password) {
         Driver tempDriver = manager.getDriver(username);
-        if(tempDriver.getUserStatus() == UserStatus.suspended || !tempDriver.getVerified()){
+        if (tempDriver == null) {
             return false;
         }
-        if (tempDriver == null) {
+        if(tempDriver.getUserStatus() == UserStatus.suspended || !tempDriver.getVerified()){
             return false;
         }
         if (tempDriver.getPassword().equals(password)) {

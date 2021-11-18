@@ -20,13 +20,13 @@ public class Menu {
                 System.out.println("=== Register as a passenger ===");
                 while (true) {
                     System.out.println("Please enter the username you would like to use: ");
-                    String username = sc.nextLine();
+                    String username = sc.next();
                     System.out.println("Please enter your mobile number: ");
-                    String mobileNumber = sc.nextLine();
+                    String mobileNumber = sc.next();
                     System.out.println("Please enter your email: ");
-                    String email = sc.nextLine();
+                    String email = sc.next();
                     System.out.println("Please enter the password you would like to use: ");
-                    String password = sc.nextLine();
+                    String password = sc.next();
                     if (!IdentityManager.registerAsPassenger(new Passenger(username, mobileNumber, email, password))) {
                         System.out.println("Please choose a different username");
                     } else {
@@ -37,17 +37,17 @@ public class Menu {
                 System.out.println("=== Register as a driver ===");
                 while (true) {
                     System.out.println("Please enter the username you would like to use: ");
-                    String username = sc.nextLine();
+                    String username = sc.next();
                     System.out.println("Please enter your mobile number: ");
-                    String mobileNumber = sc.nextLine();
+                    String mobileNumber = sc.next();
                     System.out.println("Please enter your email: ");
-                    String email = sc.nextLine();
+                    String email = sc.next();
                     System.out.println("Please enter the password you would like to use: ");
-                    String password = sc.nextLine();
+                    String password = sc.next();
                     System.out.println("Please enter your license number: ");
-                    String license = sc.nextLine();
+                    String license = sc.next();
                     System.out.println("Please enter your ID number: ");
-                    String id = sc.nextLine();
+                    String id = sc.next();
                     if (!IdentityManager.registerAsDriver(new Driver(username, mobileNumber, email, password, license, id))) {
                         System.out.println("Please choose a different username");
                     } else {
@@ -58,9 +58,9 @@ public class Menu {
                 System.out.println("=== Log in as a passenger");
                 while (true) {
                     System.out.println("Please enter your username: ");
-                    String username = sc.nextLine();
+                    String username = sc.next();
                     System.out.println("Please enter your password: ");
-                    String password = sc.nextLine();
+                    String password = sc.next();
                     if (IdentityManager.loginAsPassenger(username, password)) {
                         passengerMenu();
                         break;
@@ -72,9 +72,9 @@ public class Menu {
                 System.out.println("=== Log in as a driver");
                 while (true) {
                     System.out.println("Please enter your username: ");
-                    String username = sc.nextLine();
+                    String username = sc.next();
                     System.out.println("Please enter your password: ");
-                    String password = sc.nextLine();
+                    String password = sc.next();
                     if (IdentityManager.loginAsDriver(username, password)) {
                         driverMenu();
                         break;
@@ -86,9 +86,9 @@ public class Menu {
                 System.out.println("=== Log in as an admin");
                 while (true) {
                     System.out.println("Please enter your username: ");
-                    String username = sc.nextLine();
+                    String username = sc.next();
                     System.out.println("Please enter your password: ");
-                    String password = sc.nextLine();
+                    String password = sc.next();
                     if (IdentityManager.loginAsAdmin(username, password)) {
                         adminMenu();
                         break;
@@ -105,11 +105,11 @@ public class Menu {
     }
 
     public void passengerMenu() {
-
+        System.out.println("YOU ARE NOW A PASSENGER");
     }
 
     public void driverMenu() {
-
+        System.out.println("YOU ARE NOW A DRIVER");
     }
 
     public void adminMenu() {
@@ -126,7 +126,7 @@ public class Menu {
                         System.out.println(drivers.get(i));
                     }
                     System.out.println("Please enter the username of the driver you would like to verify: ");
-                    String username = sc.nextLine();
+                    String username = sc.next();
                     Driver tempDriver = manager.getDriver(username);
                     if (tempDriver == null) {
                         System.out.println("Please enter a valid driver username");
@@ -138,7 +138,7 @@ public class Menu {
             } else if (input == 2) {
                 while (true) {
                     System.out.println("Please enter the username of the user you would like to suspend: ");
-                    String username = sc.nextLine();
+                    String username = sc.next();
                     User tempUser = manager.getUser(username);
                     if (tempUser == null) {
                         System.out.println("Please enter a valid username");
