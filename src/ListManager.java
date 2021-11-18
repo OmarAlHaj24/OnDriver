@@ -79,8 +79,12 @@ public class ListManager implements DataManager {
 
     @Override
     public Boolean addToPassenger(Passenger passenger) {
-        listOfPassengers.add(passenger);
-        return null;
+        if(listOfPassengers.contains(passenger)){
+            return false;
+        }else{
+            listOfPassengers.add(passenger);
+            return true;
+        }
     }
 
     @Override
@@ -95,8 +99,12 @@ public class ListManager implements DataManager {
 
     @Override
     public Boolean addToDriver(Driver driver) {
-        listOfDrivers.add(driver);
-        return null;
+        if(listOfDrivers.contains(driver)){
+            return false;
+        }else{
+            listOfDrivers.add(driver);
+            return true;
+        }
     }
 
     @Override
@@ -111,8 +119,12 @@ public class ListManager implements DataManager {
 
     @Override
     public Boolean addToArea(Area area) {
-        listOfAreas.add(area);
-        return null;
+        if(listOfAreas.contains(area)){
+            return false;
+        }else{
+            listOfAreas.add(area);
+            return true;
+        }
     }
 
     @Override
