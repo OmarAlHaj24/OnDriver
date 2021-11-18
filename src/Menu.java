@@ -134,7 +134,7 @@ public class Menu {
         int choice;
 
         while (true) {
-            System.out.println("Passenger Menu: ");
+            System.out.println("=== Passenger menu ===");
             System.out.println("1- Logout");
             System.out.println("2- Request Ride");
             System.out.println("3- Rate Ride");
@@ -187,6 +187,7 @@ public class Menu {
 
     public void driverMenu() {
         while (true) {
+            System.out.println("=== Driver menu ===");
             System.out.println("1- Add Favorite Area");
             System.out.println("2- List all Rides within Favorite Area");
             System.out.println("3- Offer a Price to a Ride");
