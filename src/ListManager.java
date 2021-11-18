@@ -118,7 +118,7 @@ public class ListManager implements DataManager {
     @Override
     public Area getArea(String location) {
         for(int i = 0; i<listOfDrivers.size(); i++){
-            if(location.equals(listOfAreas.get(i).getSource())){
+            if(location.equals(listOfAreas.get(i).getLocation())){
                 return listOfAreas.get(i);
             }
         }

@@ -1,3 +1,7 @@
 public class Area {
-    String location
+    String location;
+
+    public String getLocation() {
+        return location;
+    }
 }
