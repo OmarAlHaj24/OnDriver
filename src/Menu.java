@@ -29,6 +29,11 @@ public class Menu {
                     String password = sc.next();
                     if (!IdentityManager.registerAsPassenger(new Passenger(username, mobileNumber, email, password))) {
                         System.out.println("Please choose a different username");
+                        System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                        int input2 = sc.nextInt();
+                        if (input2 == 1) {
+                            break;
+                        }
                     } else {
                         break;
                     }
@@ -50,6 +55,11 @@ public class Menu {
                     String id = sc.next();
                     if (!IdentityManager.registerAsDriver(new Driver(username, mobileNumber, email, password, license, id))) {
                         System.out.println("Please choose a different username");
+                        System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                        int input2 = sc.nextInt();
+                        if (input2 == 1) {
+                            break;
+                        }
                     } else {
                         break;
                     }
@@ -66,6 +76,11 @@ public class Menu {
                         break;
                     } else {
                         System.out.println("You either entered wrong credentials or your account is suspended");
+                        System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                        int input2 = sc.nextInt();
+                        if (input2 == 1) {
+                            break;
+                        }
                     }
                 }
             } else if (input == 4) {
@@ -80,6 +95,11 @@ public class Menu {
                         break;
                     } else {
                         System.out.println("You either entered wrong credentials or your account is suspended or not verified yet");
+                        System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                        int input2 = sc.nextInt();
+                        if (input2 == 1) {
+                            break;
+                        }
                     }
                 }
             } else if (input == 5) {
@@ -94,6 +114,11 @@ public class Menu {
                         break;
                     } else {
                         System.out.println("You either entered wrong credentials or your account is suspended");
+                        System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                        int input2 = sc.nextInt();
+                        if (input2 == 1) {
+                            break;
+                        }
                     }
                 }
             } else if (input == 6) {
@@ -109,16 +134,92 @@ public class Menu {
     }
 
     public void driverMenu() {
-        System.out.println("YOU ARE NOW A DRIVER");
+        while (true) {
+            System.out.println("1- Add Favorite Area");
+            System.out.println("2- List all Rides within Favorite Area");
+            System.out.println("3- Offer a Price to a Ride");
+            System.out.println("4- List User's Rating");
+            System.out.println("5- Log Out");
+            System.out.print("Your Choice: ");
+            int choice = sc.nextInt();
+
+            if (choice == 1) {
+                System.out.print("Name of the area: ");
+                String name = sc.nextLine();
+                Area area = manager.getArea(name);
+                if (area == null) {
+                    area = new Area(name);
+                    manager.addToArea(area);
+                }
+                ((Driver) IdentityManager.currentUser).addFavArea(area);
+            } else if (choice == 2) {
+                ((Driver) IdentityManager.currentUser).listFavouriteAreas();
+                System.out.println();
+                System.out.print("Enter Number of Favorite Area: ");
+                while (true) {
+                    int num = sc.nextInt();
+                    if (num >= ((Driver) IdentityManager.currentUser).getFavouriteAreas().size()) {
+                        System.out.println("You entered a wrong number");
+                        System.out.println("Enter Number of Favorite Area: ");
+                        continue;
+                    }
+                    ((Driver) IdentityManager.currentUser).viewRides(num);
+                    break;
+                }
+            } else if (choice == 3) {
+                ((Driver) IdentityManager.currentUser).listFavouriteAreas();
+                System.out.println();
+                System.out.print("Enter Number of Favorite Area: ");
+                while (true) {
+                    int num = sc.nextInt();
+                    if (num >= ((Driver) IdentityManager.currentUser).getFavouriteAreas().size()) {
+                        System.out.println("You entered a wrong number");
+                        System.out.println("Enter Number of Favorite Area: ");
+                        continue;
+                    }
+                    ((Driver) IdentityManager.currentUser).viewRides(num);
+                    System.out.print("Enter Number of Ride: ");
+                    Ride ride;
+                    while (true) {
+                        int num1 = sc.nextInt();
+                        if (num1 >= ((Driver) IdentityManager.currentUser).getRides().size()) {
+                            System.out.println("You entered a wrong number");
+                            System.out.println("Enter Number of Ride: ");
+                            continue;
+                        }
+                        if (!((Driver) IdentityManager.currentUser).isRideInArea(num1, num)) {
+                            System.out.println("You entered a wrong number");
+                            System.out.println("Enter Number of Ride: ");
+                            continue;
+                        }
+                        System.out.print("Enter price to offer: ");
+                        Double price = sc.nextDouble();
+                        Offer offer = new Offer(price, (Driver) IdentityManager.currentUser);
+                        ((Driver) IdentityManager.currentUser).suggestOffer(num1, offer);
+                        break;
+                    }
+
+                    break;
+                }
+            } else if (choice == 4) {
+                ((Driver) IdentityManager.currentUser).viewRating();
+            } else if (choice == 5) {
+                break;
+            } else {
+                System.out.println("You entered a wrong choice");
+            }
+            System.out.println();
+        }
+
     }
 
     public void adminMenu() {
-        System.out.println("=== Admin menu ===");
-        System.out.println("1- Verify driver");
-        System.out.println("2- Suspend user");
-        System.out.println("3- Log out");
-        int input = sc.nextInt();
         while (true) {
+            System.out.println("=== Admin menu ===");
+            System.out.println("1- Verify driver");
+            System.out.println("2- Suspend user");
+            System.out.println("3- Log out");
+            int input = sc.nextInt();
             if (input == 1) {
                 while (true) {
                     List<Driver> drivers = manager.listAllPendingDrivers();
@@ -130,6 +231,11 @@ public class Menu {
                     Driver tempDriver = manager.getDriver(username);
                     if (tempDriver == null) {
                         System.out.println("Please enter a valid driver username");
+                        System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                        int input2 = sc.nextInt();
+                        if (input2 == 1) {
+                            break;
+                        }
                     } else {
                         tempDriver.setVerified(true);
                         break;
@@ -142,6 +248,11 @@ public class Menu {
                     User tempUser = manager.getUser(username);
                     if (tempUser == null) {
                         System.out.println("Please enter a valid username");
+                        System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                        int input2 = sc.nextInt();
+                        if (input2 == 1) {
+                            break;
+                        }
                     } else {
                         tempUser.setUserStatus(UserStatus.suspended);
                         break;
