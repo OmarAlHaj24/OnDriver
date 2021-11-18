@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Passenger {
+public class Passenger extends User{
     private List<Ride>pastRides;
     private Ride currentRide;
 
