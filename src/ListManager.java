@@ -136,4 +136,24 @@ public class ListManager implements DataManager {
         }
         return null;
     }
+
+    @Override
+    public Boolean addToAdmin(Admin admin) {
+        if(listOfAdmin.contains(admin)){
+            return false;
+        }else{
+            listOfAdmin.add(admin);
+            return true;
+        }
+    }
+
+    @Override
+    public Admin getAdmin(String username) {
+        for(int i = 0; i < listOfAdmin.size(); i++){
+            if(username.equals(listOfAdmin.get(i).username)){
+                return listOfAdmin.get(i);
+            }
+        }
+        return null;
+    }
 }

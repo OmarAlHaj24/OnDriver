@@ -10,4 +10,6 @@ public interface DataManager {
     public Driver getDriver(String userName);
     public Boolean addToArea(Area area);
     public Area getArea(String location);
+    public Boolean addToAdmin(Admin admin);
+    public Admin getAdmin(String username);
 }
