@@ -2,10 +2,10 @@ import java.util.List;
 
 public class IdentityManager {
     public static User currentUser;
-    private static DataManager manager = ListManager.getInstance();;
+    private static final DataManager manager = ListManager.getInstance();;
 
     public static Boolean registerAsPassenger(Passenger user){
-        if(manager.isAvailable(user.username)){
+        if(manager.isAvailable(user.getUsername())){
             manager.addToPassenger(user);
             return true;
         }else{
@@ -14,7 +14,7 @@ public class IdentityManager {
     }
 
     public static Boolean registerAsDriver(Driver user){
-        if(manager.isAvailable(user.username)){
+        if(manager.isAvailable(user.getUsername())){
             manager.addToDriver(user);
             return true;
         }else{
@@ -24,7 +24,7 @@ public class IdentityManager {
 
     public static Boolean loginAsPassenger(String username, String password){
         Passenger tempPassenger = manager.getPassenger(username);
-        if(tempPassenger.password.equals(password)){
+        if(tempPassenger.getPassword().equals(password)){
             currentUser = tempPassenger;
             return true;
         }else{
@@ -34,7 +34,7 @@ public class IdentityManager {
 
     public static Boolean loginAsDriver(String username, String password){
         Driver tempDriver = manager.getDriver(username);
-        if(tempDriver.password.equals(password)){
+        if(tempDriver.getPassword().equals(password)){
             currentUser = tempDriver;
             return true;
         }else{
@@ -43,6 +43,12 @@ public class IdentityManager {
     }
 
     public static Boolean loginAsAdmin(String username, String password){
-
+        Admin tempAdmin = manager.getAdmin(username);
+        if(tempAdmin.getPassword().equals(password)){
+            currentUser = tempAdmin;
+            return true;
+        }else{
+            return false;
+        }
     }
 }
