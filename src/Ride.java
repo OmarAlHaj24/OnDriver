@@ -10,43 +10,49 @@ public class Ride {
     private Boolean isAccepted = false;
 
     public void setSource(Area source) {
-        this.source=source;
+        this.source = source;
     }
+
     public Area getSource() {
         return source;
     }
 
     public void setDestination(Area destination) {
-        this.destination=destination;
+        this.destination = destination;
     }
+
     public Area getDestination() {
         return destination;
     }
 
     public void setPassenger(Passenger passenger) {
-        this.passenger=passenger;
+        this.passenger = passenger;
     }
+
     public Passenger getPassenger() {
         return passenger;
     }
 
     public void setAcceptedOffer(Offer acceptedOffer) {
-        this.acceptedOffer=acceptedOffer;
+        this.acceptedOffer = acceptedOffer;
     }
+
     public Offer getAcceptedOffer() {
         return acceptedOffer;
     }
 
     public void setOffers(ArrayList<Offer> offers) {
-        this.offers=offers;
+        this.offers = offers;
     }
+
     public ArrayList<Offer> getOffers() {
         return offers;
     }
 
     public void setAccepted(Boolean accepted) {
-        isAccepted=accepted;
+        isAccepted = accepted;
     }
+
     public Boolean getAccepted() {
         return isAccepted;
     }
@@ -56,7 +62,7 @@ public class Ride {
     }
 
     public void viewOffers() {
-        for(int i = 0; i < offers.size(); i++){
+        for (int i = 0; i < offers.size(); i++) {
             System.out.println(i + "- " + offers.get(i));
         }
     }
@@ -65,7 +71,7 @@ public class Ride {
         acceptedOffer = offers.get(offerNumber);
     }
 
-    public String toString(){
+    public String toString() {
         return "Source: " + source.getLocation() + "/n" + "Destination: " + destination.getLocation() + "/nPassenger username: " +
                 passenger.getUsername() + "/n Passenger phone number: " + passenger.getMobileNumber();
     }

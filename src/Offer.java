@@ -2,7 +2,7 @@ public class Offer {
     private double price;
     private Driver driver;
 
-    public Offer(double price, Driver driver){
+    public Offer(double price, Driver driver) {
         this.driver = driver;
         this.price = price;
     }
@@ -27,6 +27,6 @@ public class Offer {
     public String toString() {
         return "price: " + price +
                 ", driver name: " + driver.getUsername() + ", driver phone number: " + driver.getMobileNumber()
-                +", driver license" + driver.getDriverLicense() + ", driver average rating: " + driver.getRating().getAverageRating();
+                + ", driver license" + driver.getDriverLicense() + ", driver average rating: " + driver.getRating().getAverageRating();
     }
 }

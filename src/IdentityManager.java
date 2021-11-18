@@ -2,61 +2,62 @@ import java.util.List;
 
 public class IdentityManager {
     public static User currentUser;
-    private static final DataManager manager = ListManager.getInstance();;
+    private static final DataManager manager = ListManager.getInstance();
+    ;
 
-    public static Boolean registerAsPassenger(Passenger user){
-        if(manager.isAvailable(user.getUsername())){
+    public static Boolean registerAsPassenger(Passenger user) {
+        if (manager.isAvailable(user.getUsername())) {
             manager.addToPassenger(user);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public static Boolean registerAsDriver(Driver user){
-        if(manager.isAvailable(user.getUsername())){
+    public static Boolean registerAsDriver(Driver user) {
+        if (manager.isAvailable(user.getUsername())) {
             manager.addToDriver(user);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public static Boolean loginAsPassenger(String username, String password){
+    public static Boolean loginAsPassenger(String username, String password) {
         Passenger tempPassenger = manager.getPassenger(username);
-        if(tempPassenger == null){
+        if (tempPassenger == null) {
             return false;
         }
-        if(tempPassenger.getPassword().equals(password)){
+        if (tempPassenger.getPassword().equals(password)) {
             currentUser = tempPassenger;
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public static Boolean loginAsDriver(String username, String password){
+    public static Boolean loginAsDriver(String username, String password) {
         Driver tempDriver = manager.getDriver(username);
-        if(tempDriver == null){
+        if (tempDriver == null) {
             return false;
         }
-        if(tempDriver.getPassword().equals(password)){
+        if (tempDriver.getPassword().equals(password)) {
             currentUser = tempDriver;
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public static Boolean loginAsAdmin(String username, String password){
+    public static Boolean loginAsAdmin(String username, String password) {
         Admin tempAdmin = manager.getAdmin(username);
-        if(tempAdmin == null){
+        if (tempAdmin == null) {
             return false;
         }
-        if(tempAdmin.getPassword().equals(password)){
+        if (tempAdmin.getPassword().equals(password)) {
             currentUser = tempAdmin;
             return true;
-        }else{
+        } else {
             return false;
         }
     }

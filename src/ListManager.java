@@ -8,15 +8,15 @@ public class ListManager implements DataManager {
     private ArrayList<Area> listOfAreas;
     private ArrayList<Admin> listOfAdmin;
 
-    private ListManager(){
+    private ListManager() {
         listOfPassengers = new ArrayList<Passenger>();
         listOfDrivers = new ArrayList<>();
         listOfAreas = new ArrayList<>();
         listOfAdmin = new ArrayList<>();
     }
 
-    public static ListManager getInstance(){
-        if(instance == null){
+    public static ListManager getInstance() {
+        if (instance == null) {
             instance = new ListManager();
         }
         return instance;
@@ -24,20 +24,20 @@ public class ListManager implements DataManager {
 
     @Override
     public Boolean isAvailable(String userName) {
-        for(int i = 0; i<listOfAdmin.size(); i++){
-            if(userName.equals(listOfAdmin.get(i).getUsername())){
+        for (int i = 0; i < listOfAdmin.size(); i++) {
+            if (userName.equals(listOfAdmin.get(i).getUsername())) {
                 return false;
             }
         }
 
-        for(int i = 0; i<listOfPassengers.size(); i++){
-            if(userName.equals(listOfPassengers.get(i).getUsername())){
+        for (int i = 0; i < listOfPassengers.size(); i++) {
+            if (userName.equals(listOfPassengers.get(i).getUsername())) {
                 return false;
             }
         }
 
-        for(int i = 0; i<listOfDrivers.size(); i++){
-            if(userName.equals(listOfDrivers.get(i).getUsername())){
+        for (int i = 0; i < listOfDrivers.size(); i++) {
+            if (userName.equals(listOfDrivers.get(i).getUsername())) {
                 return false;
             }
         }
@@ -47,8 +47,8 @@ public class ListManager implements DataManager {
     @Override
     public List<Driver> listAllPendingDrivers() {
         List<Driver> pendingDrivers = new ArrayList<>();
-        for(int i = 0; i<listOfDrivers.size(); i++){
-            if(!listOfDrivers.get(i).getVerified()){
+        for (int i = 0; i < listOfDrivers.size(); i++) {
+            if (!listOfDrivers.get(i).getVerified()) {
                 pendingDrivers.add(listOfDrivers.get(i));
             }
         }
@@ -57,20 +57,20 @@ public class ListManager implements DataManager {
 
     @Override
     public User getUser(String userName) {
-        for(int i = 0; i<listOfAdmin.size(); i++){
-            if(userName.equals(listOfAdmin.get(i).getUsername())){
+        for (int i = 0; i < listOfAdmin.size(); i++) {
+            if (userName.equals(listOfAdmin.get(i).getUsername())) {
                 return listOfAdmin.get(i);
             }
         }
 
-        for(int i = 0; i<listOfPassengers.size(); i++){
-            if(userName.equals(listOfPassengers.get(i).getUsername())){
+        for (int i = 0; i < listOfPassengers.size(); i++) {
+            if (userName.equals(listOfPassengers.get(i).getUsername())) {
                 return listOfPassengers.get(i);
             }
         }
 
-        for(int i = 0; i<listOfDrivers.size(); i++){
-            if(userName.equals(listOfDrivers.get(i).getUsername())){
+        for (int i = 0; i < listOfDrivers.size(); i++) {
+            if (userName.equals(listOfDrivers.get(i).getUsername())) {
                 return listOfDrivers.get(i);
             }
         }
@@ -79,9 +79,9 @@ public class ListManager implements DataManager {
 
     @Override
     public Boolean addToPassenger(Passenger passenger) {
-        if(listOfPassengers.contains(passenger)){
+        if (listOfPassengers.contains(passenger)) {
             return false;
-        }else{
+        } else {
             listOfPassengers.add(passenger);
             return true;
         }
@@ -89,8 +89,8 @@ public class ListManager implements DataManager {
 
     @Override
     public Passenger getPassenger(String userName) {
-        for(int i = 0; i<listOfPassengers.size(); i++){
-            if(userName.equals(listOfPassengers.get(i).getUsername())){
+        for (int i = 0; i < listOfPassengers.size(); i++) {
+            if (userName.equals(listOfPassengers.get(i).getUsername())) {
                 return listOfPassengers.get(i);
             }
         }
@@ -99,9 +99,9 @@ public class ListManager implements DataManager {
 
     @Override
     public Boolean addToDriver(Driver driver) {
-        if(listOfDrivers.contains(driver)){
+        if (listOfDrivers.contains(driver)) {
             return false;
-        }else{
+        } else {
             listOfDrivers.add(driver);
             return true;
         }
@@ -109,8 +109,8 @@ public class ListManager implements DataManager {
 
     @Override
     public Driver getDriver(String userName) {
-        for(int i = 0; i<listOfDrivers.size(); i++){
-            if(userName.equals(listOfDrivers.get(i).getUsername())){
+        for (int i = 0; i < listOfDrivers.size(); i++) {
+            if (userName.equals(listOfDrivers.get(i).getUsername())) {
                 return listOfDrivers.get(i);
             }
         }
@@ -119,9 +119,9 @@ public class ListManager implements DataManager {
 
     @Override
     public Boolean addToArea(Area area) {
-        if(listOfAreas.contains(area)){
+        if (listOfAreas.contains(area)) {
             return false;
-        }else{
+        } else {
             listOfAreas.add(area);
             return true;
         }
@@ -129,8 +129,8 @@ public class ListManager implements DataManager {
 
     @Override
     public Area getArea(String location) {
-        for(int i = 0; i<listOfDrivers.size(); i++){
-            if(location.equals(listOfAreas.get(i).getLocation())){
+        for (int i = 0; i < listOfDrivers.size(); i++) {
+            if (location.equals(listOfAreas.get(i).getLocation())) {
                 return listOfAreas.get(i);
             }
         }
@@ -139,9 +139,9 @@ public class ListManager implements DataManager {
 
     @Override
     public Boolean addToAdmin(Admin admin) {
-        if(listOfAdmin.contains(admin)){
+        if (listOfAdmin.contains(admin)) {
             return false;
-        }else{
+        } else {
             listOfAdmin.add(admin);
             return true;
         }
@@ -149,8 +149,8 @@ public class ListManager implements DataManager {
 
     @Override
     public Admin getAdmin(String username) {
-        for(int i = 0; i < listOfAdmin.size(); i++){
-            if(username.equals(listOfAdmin.get(i).getUsername())){
+        for (int i = 0; i < listOfAdmin.size(); i++) {
+            if (username.equals(listOfAdmin.get(i).getUsername())) {
                 return listOfAdmin.get(i);
             }
         }
