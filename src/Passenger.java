@@ -70,4 +70,9 @@ public class Passenger extends User {
     public Ride getPastRide(int index) {
         return pastRides.get(index);
     }
+
+    @Override
+    public String toString(){
+       return  super.toString ();
+    }
 }
