@@ -1,5 +1,5 @@
 public class IdentityManager {
-    User currentUser;
+    private User currentUser;
 
     public void registerAsPassenger(Passenger user){
 
