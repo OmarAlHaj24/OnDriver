@@ -8,6 +8,10 @@ public class Driver extends User implements DriverObserver{
     private List<Ride> rides;
     private Rating rating;
 
+    public Driver(String username, String mobileNumber, String email, String password, UserStatus userStatus) {
+        super(username, mobileNumber, email, password, UserStatus.activated);
+    }
+
     public void setDriverLicense(String driverLicense) {
         this.driverLicense=driverLicense;
     }
