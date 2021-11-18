@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListManager implements DataManager {
-    private ListManager instance = null;
+    private static ListManager instance = null;
     private ArrayList<Passenger> listOfPassengers;
     private ArrayList<Driver> listOfDrivers;
     private ArrayList<Area> listOfAreas;
@@ -15,7 +15,7 @@ public class ListManager implements DataManager {
         listOfAdmin = new ArrayList<>();
     }
 
-    public ListManager getInstance(){
+    public static ListManager getInstance(){
         if(instance == null){
             instance = new ListManager();
         }
