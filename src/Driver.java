@@ -71,4 +71,8 @@ public class Driver implements DriverObserver{
     }
 
 
+    @Override
+    public void update(Ride ride) {
+
+    }
 }
