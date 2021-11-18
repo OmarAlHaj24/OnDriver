@@ -5,7 +5,8 @@ public class Rating {
     int ratingSum;
 
     public double getAverageRating() {
-
+        Double average = 1.0 * ratingSum / driverRatings.size();
+        return average;
     }
 
     public void addRating(Ride ride, int rating) {

@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Driver implements DriverObserver{
+public class Driver extends User implements DriverObserver{
     private String driverLicense;
     private String nationalID;
     private Boolean isVerified = false;
