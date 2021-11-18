@@ -60,14 +60,15 @@ public class Driver extends User implements DriverObserver{
         return rating;
     }
 
-    public void suggestOffer(Ride ride, Offer offer){
+    public void suggestOffer(int index, Offer offer){
+        Ride ride = getRide(index);
         ride.addOffer(offer);
     }
 
     public void viewRides(int index){
         for(int i = 0; i < rides.size(); i++){
             if(rides.get(i).getSource().equals(favouriteAreas.get(index))){
-                System.out.println(rides.get(i).getSource());
+                System.out.println(i + " - " + rides.get(i).getSource());
             }
         }
     }
@@ -84,6 +85,10 @@ public class Driver extends User implements DriverObserver{
         for(int i = 0; i < favouriteAreas.size(); i++){
             System.out.println(i + " - " + favouriteAreas.get(i).getLocation());
         }
+    }
+
+    public Ride getRide(int index){
+        return rides.get(index);
     }
 
     @Override
