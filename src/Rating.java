@@ -1,8 +1,8 @@
 import java.util.HashMap;
 
 public class Rating {
-    HashMap<Ride, Integer> driverRatings = new HashMap<Ride, Integer>();
-    int ratingSum;
+    private HashMap<Ride, Integer> driverRatings = new HashMap<Ride, Integer>();
+    private int ratingSum;
 
     public double getAverageRating() {
         Double average = 1.0 * ratingSum / driverRatings.size();

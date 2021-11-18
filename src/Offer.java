@@ -1,4 +1,4 @@
 public class Offer {
-    double price;
-    Driver driver;
+    private double price;
+    private Driver driver;
 }
