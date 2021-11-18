@@ -50,11 +50,8 @@ public class Passenger extends User {
         return avgRating;
     }
 
-    public void checkOffers(Ride currentRide) {
-        ArrayList<Offer> offers = currentRide.getOffers();
-        for (int i = 0; i < offers.size(); i++) {
-            System.out.println(i + "- " + offers.get(i));
-        }
+    public void checkOffers() {
+        currentRide.viewOffers();
     }
 
     public void acceptOffer(int offerNum) {
@@ -68,7 +65,6 @@ public class Passenger extends User {
         for (int i = 0; i < pastRides.size(); i++) {
             System.out.println(i + "- " + pastRides.get(i));
         }
-
     }
 
     public Ride getPastRide(int index) {

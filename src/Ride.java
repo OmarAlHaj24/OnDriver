@@ -9,6 +9,13 @@ public class Ride {
     private ArrayList<Offer> offers = new ArrayList<>();
     private Boolean isAccepted = false;
 
+    public Ride(Area source, Area destination, Passenger passenger) {
+        this.source = source;
+        this.passenger = passenger;
+        this.destination = destination;
+        acceptedOffer = null;
+    }
+
     public void setSource(Area source) {
         this.source = source;
     }
