@@ -60,8 +60,8 @@ public class Driver extends User implements DriverObserver {
         return rating;
     }
 
-    public void suggestOffer(int index, Offer offer) {
-        Ride ride = rides.get(index);
+    public void suggestOffer(int idx, Offer offer) {
+        Ride ride = rides.get(idx);
         ride.addOffer(offer);
     }
 
@@ -90,6 +90,14 @@ public class Driver extends User implements DriverObserver {
     @Override
     public void update(Ride ride) {
         rides.add(ride);
+    }
+
+    public Boolean isRideInArea(int ride, int area){
+        Ride r = rides.get(ride);
+        Area a = favouriteAreas.get(area);
+        if(r.getSource() == a)
+            return true;
+        return false;
     }
 
     @Override
