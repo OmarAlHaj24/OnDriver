@@ -9,6 +9,48 @@ public class Ride {
     private ArrayList<Offer> offers = new ArrayList<>();
     private Boolean isAccepted = false;
 
+    public void setSource(Area source) {
+        this.source=source;
+    }
+    public Area getSource() {
+        return source;
+    }
+
+    public void setDestination(Area destination) {
+        this.destination=destination;
+    }
+    public Area getDestination() {
+        return destination;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger=passenger;
+    }
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
+    public void setAcceptedOffer(Offer acceptedOffer) {
+        this.acceptedOffer=acceptedOffer;
+    }
+    public Offer getAcceptedOffer() {
+        return acceptedOffer;
+    }
+
+    public void setOffers(ArrayList<Offer> offers) {
+        this.offers=offers;
+    }
+    public ArrayList<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setAccepted(Boolean accepted) {
+        isAccepted=accepted;
+    }
+    public Boolean getAccepted() {
+        return isAccepted;
+    }
+
     public void addOffer(Offer offer) {
         offers.add(offer);
     }
