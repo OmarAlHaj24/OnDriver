@@ -6,7 +6,7 @@ public class Rating {
     private int ratingSum = 0;
 
     public double getAverageRating() {
-        if(driverRatings.size() == 0){
+        if (driverRatings.size() == 0) {
             return 0;
         }
         return 1.0 * ratingSum / driverRatings.size();
