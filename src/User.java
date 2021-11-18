@@ -1,9 +1,9 @@
 public abstract class User {
-    String username;
-    String mobileNumber;
-    String email;
-    String password;
-    UserStatus userStatus;
+    private String username;
+    private String mobileNumber;
+    private String email;
+    private String password;
+    private UserStatus userStatus;
 
     public String getUsername() {
         return username;
