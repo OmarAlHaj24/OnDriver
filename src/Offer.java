@@ -2,6 +2,11 @@ public class Offer {
     private double price;
     private Driver driver;
 
+    public Offer(double price, Driver driver){
+        this.driver = driver;
+        this.price = price;
+    }
+
     public double getPrice() {
         return price;
     }

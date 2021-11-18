@@ -8,6 +8,7 @@ public class Passenger extends User{
     public Passenger(String username, String mobileNumber, String email, String password) {
         super (username, mobileNumber, email, password, UserStatus.activated);
         pastRides = new ArrayList<Ride>();
+        currentRide = null;
     }
 
     public void setPastRides(ArrayList<Ride> pastRides) {
@@ -25,6 +26,7 @@ public class Passenger extends User{
     }
 
     public void requestRide(Ride ride){
+        ride.getSource().notifyDrivers(ride);
         currentRide = ride;
     }
 
@@ -47,22 +49,22 @@ public class Passenger extends User{
     }
 
     public void checkOffers(Ride currentRide){
-        System.out.println (currentRide.getOffers ());
+        ArrayList<Offer> offers = currentRide.getOffers ();
+        for(int i = 0; i<offers.size(); i++){
+            System.out.println (i + "- " + offers.get(i));
+        }
     }
 
     public void acceptOffer(int offerNum){
-        for (int i=0;i<currentRide.getOffers ().size ();i++){
-            if (currentRide.getOffers ().get (i).equals (offerNum)){
-                Offer accepted = currentRide.getOffers ().get (i);
-                currentRide.setAcceptedOffer (accepted);
-            }
-        }
-
+        Offer accepted = currentRide.getOffers ().get (offerNum);
+        currentRide.setAcceptedOffer (accepted);
+        pastRides.add(currentRide);
+        currentRide = null;
     }
 
     public void listPastRides(){
         for (int i=0;i<pastRides.size ();i++){
-            System.out.println (pastRides.get (i));
+            System.out.println (i + "- " + pastRides.get (i));
         }
 
     }
