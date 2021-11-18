@@ -4,7 +4,9 @@ import java.util.List;
 public class Passenger extends User{
     private ArrayList<Ride>pastRides;
     private Ride currentRide;
-    private Passenger(){
+
+    public Passenger(String username, String mobileNumber, String email, String password, UserStatus userStatus) {
+        super (username, mobileNumber, email, password, userStatus);
         pastRides = new ArrayList<Ride>();
     }
 
@@ -29,21 +31,32 @@ public class Passenger extends User{
     public void rateRide(Ride ride, int rate){
         for (int i=0;i<pastRides.size ();i++){
             if (pastRides.get (i).equals (ride)){
-                pastRides.get (i)
+                pastRides.get (i).getAcceptedOffer ().getDriver ().getRating ().addRating (ride,rate);
             }
         }
     }
 
     public double getRating(String username){
-
-        return 0;
+        double avgRating=0;
+        for (int i=0;i<pastRides.size ();i++){
+            if(pastRides.get (i).getAcceptedOffer ().getDriver ().getUsername ().equals (username)){
+                avgRating = pastRides.get (i).getAcceptedOffer ().getDriver ().getRating ().getAverageRating ();
+            }
+        }
+        return avgRating;
     }
 
     public void checkOffers(Ride currentRide){
-
+        System.out.println (currentRide.getOffers ());
     }
 
     public void acceptOffer(int offerNum){
+        for (int i=0;i<currentRide.getOffers ().size ();i++){
+            if (currentRide.getOffers ().get (i).equals (offerNum)){
+                Offer accepted = currentRide.getOffers ().get (i);
+                currentRide.setAcceptedOffer (accepted);
+            }
+        }
 
     }
 
