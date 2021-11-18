@@ -3,6 +3,6 @@ public class Admin extends User {
 
     }
     public Boolean suspend(String username){
-
+        return null;
     }
 }
