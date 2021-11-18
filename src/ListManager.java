@@ -48,7 +48,7 @@ public class ListManager implements DataManager {
     public List<Driver> listAllPendingDrivers() {
         List<Driver> pendingDrivers = new ArrayList<>();
         for(int i = 0; i<listOfDrivers.size(); i++){
-            if(!listOfDrivers.get(i).getIsVerified()){
+            if(!listOfDrivers.get(i).getVerified()){
                 pendingDrivers.add(listOfDrivers.get(i));
             }
         }
