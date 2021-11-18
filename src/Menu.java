@@ -135,27 +135,28 @@ public class Menu {
 
         while (true) {
             System.out.println("=== Passenger menu ===");
-            System.out.println("1- Logout");
-            System.out.println("2- Request Ride");
-            System.out.println("3- Rate Ride");
-            System.out.println("4- Check Offers");
-            System.out.println("5- Accept Offers");
-            System.out.println("6- View Past Rides");
-            System.out.println("--Please enter the number of your choice--");
+            System.out.println("1- Request Ride");
+            System.out.println("2- Rate Ride");
+            System.out.println("3- Check Offers");
+            System.out.println("4- Accept Offers");
+            System.out.println("5- View Past Rides");
+            System.out.println("6- Logout");
+
             choice = sc.nextInt();
 
-            if (choice == 1) {
+            if (choice == 6) {
                 break;
-            } else if (choice == 2) {
+            } else if (choice == 1) {
                 System.out.println("Enter Source and Destination: ");
                 String s = sc.nextLine();
-                Area source = new Area(s);
+                Area source = manager.getArea(s);
+
                 String d = sc.nextLine();
-                Area destination = new Area(d);
+                Area destination = manager.getArea(d);
                 Ride ride = new Ride(source, destination, (Passenger) IdentityManager.currentUser);
                 ((Passenger) IdentityManager.currentUser).requestRide(ride);
                 System.out.println("Ride was successfully requested .. you can check your offers now");
-            } else if (choice == 3) {
+            } else if (choice == 2) {
                 System.out.println("There's List of all past rides");
                 ((Passenger) IdentityManager.currentUser).getPastRides();
                 System.out.println("Enter the number of ride you wanna rate: ");
@@ -163,7 +164,7 @@ public class Menu {
                 System.out.println("Enter the rating: ");
                 int rating = sc.nextInt();
                 ((Passenger) IdentityManager.currentUser).rateRide(((Passenger) IdentityManager.currentUser).getPastRide(ride), rating);
-            } else if (choice == 4) {
+            } else if (choice == 3) {
                 ((Passenger) IdentityManager.currentUser).checkOffers();
                 boolean end = true;
                 while (end) {
@@ -172,12 +173,12 @@ public class Menu {
                     ((Passenger) IdentityManager.currentUser).getRating(name);
                     if (name.isEmpty()) end = false;
                 }
-            } else if (choice == 5) {
+            } else if (choice == 4) {
                 ((Passenger) IdentityManager.currentUser).checkOffers();
                 System.out.println("Enter the number of offer you wanna accept: ");
                 int num = sc.nextInt();
                 ((Passenger) IdentityManager.currentUser).acceptOffer(num);
-            } else if (choice == 6) {
+            } else if (choice == 5) {
                 ((Passenger) IdentityManager.currentUser).getPastRides();
             } else {
                 System.out.println("Wrong, Please enter right number");
@@ -193,17 +194,12 @@ public class Menu {
             System.out.println("3- Offer a Price to a Ride");
             System.out.println("4- List User's Rating");
             System.out.println("5- Log Out");
-            System.out.print("Your Choice: ");
             int choice = sc.nextInt();
 
             if (choice == 1) {
                 System.out.print("Name of the area: ");
                 String name = sc.nextLine();
                 Area area = manager.getArea(name);
-                if (area == null) {
-                    area = new Area(name);
-                    manager.addToArea(area);
-                }
                 ((Driver) IdentityManager.currentUser).addFavArea(area);
             } else if (choice == 2) {
                 ((Driver) IdentityManager.currentUser).listFavouriteAreas();

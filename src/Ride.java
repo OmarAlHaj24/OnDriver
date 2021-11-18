@@ -79,7 +79,7 @@ public class Ride {
     }
 
     public String toString() {
-        return "Source: " + source.getLocation() + "/n" + "Destination: " + destination.getLocation() + "/nPassenger username: " +
-                passenger.getUsername() + "/n Passenger phone number: " + passenger.getMobileNumber();
+        return "Source: " + source.getLocation() + "\n" + "Destination: " + destination.getLocation() + "\nPassenger username: " +
+                passenger.getUsername() + "\n Passenger phone number: " + passenger.getMobileNumber();
     }
 }

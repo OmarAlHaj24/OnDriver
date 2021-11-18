@@ -102,7 +102,7 @@ public class Driver extends User implements DriverObserver {
 
     @Override
     public String toString(){
-        return super.toString ()+"Driver License: "+ getDriverLicense ()+"/n"+"National ID: "+getNationalID ()+"/n";
+        return super.toString ()+"Driver License: "+ getDriverLicense ()+"\n"+"National ID: "+getNationalID ()+"\n";
     }
 
 }

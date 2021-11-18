@@ -134,7 +134,7 @@ public class ListManager implements DataManager {
                 return listOfAreas.get(i);
             }
         }
-        return null;
+        return new Area(location);
     }
 
     @Override
