@@ -130,7 +130,59 @@ public class Menu {
     }
 
     public void passengerMenu() {
-        System.out.println("YOU ARE NOW A PASSENGER");
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        while (true) {
+            System.out.println("Passenger Menu: ");
+            System.out.println("1- Logout");
+            System.out.println("2- Request Ride");
+            System.out.println("3- Rate Ride");
+            System.out.println("4- Check Offers");
+            System.out.println("5- Accept Offers");
+            System.out.println("6- View Past Rides");
+            System.out.println("--Please enter the number of your choice--");
+            choice = sc.nextInt();
+
+            if (choice == 1) {
+                break;
+            } else if (choice == 2) {
+                System.out.println("Enter Source and Destination: ");
+                String s = sc.nextLine();
+                Area source = new Area(s);
+                String d = sc.nextLine();
+                Area destination = new Area(d);
+                Ride ride = new Ride(source, destination, (Passenger) IdentityManager.currentUser);
+                ((Passenger) IdentityManager.currentUser).requestRide(ride);
+                System.out.println("Ride was successfully requested .. you can check your offers now");
+            } else if (choice == 3) {
+                System.out.println("There's List of all past rides");
+                ((Passenger) IdentityManager.currentUser).getPastRides();
+                System.out.println("Enter the number of ride you wanna rate: ");
+                int ride = sc.nextInt();
+                System.out.println("Enter the rating: ");
+                int rating = sc.nextInt();
+                ((Passenger) IdentityManager.currentUser).rateRide(((Passenger) IdentityManager.currentUser).getPastRide(ride), rating);
+            } else if (choice == 4) {
+                ((Passenger) IdentityManager.currentUser).checkOffers();
+                boolean end = true;
+                while (end) {
+                    System.out.println("Enter the name of driver you wanna view its average rating:");
+                    String name = sc.next();
+                    ((Passenger) IdentityManager.currentUser).getRating(name);
+                    if (name.isEmpty()) end = false;
+                }
+            } else if (choice == 5) {
+                ((Passenger) IdentityManager.currentUser).checkOffers();
+                System.out.println("Enter the number of offer you wanna accept: ");
+                int num = sc.nextInt();
+                ((Passenger) IdentityManager.currentUser).acceptOffer(num);
+            } else if (choice == 6) {
+                ((Passenger) IdentityManager.currentUser).getPastRides();
+            } else {
+                System.out.println("Wrong, Please enter right number");
+            }
+        }
     }
 
     public void driverMenu() {
