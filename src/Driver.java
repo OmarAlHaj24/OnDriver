@@ -50,29 +50,30 @@ public class Driver extends User implements DriverObserver{
         return rating;
     }
 
-    public void suggestOffer(Ride ride){
-
+    public void suggestOffer(Ride ride, Offer offer){
+        ride.addOffer(offer);
     }
 
     public void viewRides(int index){
-
+        System.out.println(rides.get(index));
     }
 
     public void viewRating(){
-
+        rating.viewAllRating();
     }
 
     public void addFavArea(Area area){
-
+        favouriteAreas.add(area);
     }
 
     public void listFavouriteAreas(){
-
+        for(int i = 0; i < favouriteAreas.size(); i++){
+            System.out.println(favouriteAreas.get(i).getLocation());
+        }
     }
-
 
     @Override
     public void update(Ride ride) {
-
+        rides.add(ride);
     }
 }
