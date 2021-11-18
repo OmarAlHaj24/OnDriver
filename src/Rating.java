@@ -11,6 +11,7 @@ public class Rating {
 
     public void addRating(Ride ride, int rating) {
 
+
     }
 
     public void viewAllRating() {
