@@ -65,7 +65,11 @@ public class Driver extends User implements DriverObserver{
     }
 
     public void viewRides(int index){
-        System.out.println(rides.get(index));
+        for(int i = 0; i < rides.size(); i++){
+            if(rides.get(i).getSource().equals(favouriteAreas.get(index))){
+                System.out.println(rides.get(i).getSource());
+            }
+        }
     }
 
     public void viewRating(){
@@ -78,7 +82,7 @@ public class Driver extends User implements DriverObserver{
 
     public void listFavouriteAreas(){
         for(int i = 0; i < favouriteAreas.size(); i++){
-            System.out.println(favouriteAreas.get(i).getLocation());
+            System.out.println(i + " - " + favouriteAreas.get(i).getLocation());
         }
     }
 
