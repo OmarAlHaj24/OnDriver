@@ -92,5 +92,9 @@ public class Driver extends User implements DriverObserver {
         rides.add(ride);
     }
 
+    @Override
+    public String toString(){
+        return super.toString ()+"Driver License: "+ getDriverLicense ()+"/n"+"National ID: "+getNationalID ()+"/n";
+    }
 
 }
