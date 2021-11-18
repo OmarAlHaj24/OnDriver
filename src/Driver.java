@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Driver extends User implements DriverObserver{
@@ -8,8 +9,13 @@ public class Driver extends User implements DriverObserver{
     private List<Ride> rides;
     private Rating rating;
 
-    public Driver(String username, String mobileNumber, String email, String password) {
+    public Driver(String username, String mobileNumber, String email, String password, String license, String id) {
         super(username, mobileNumber, email, password, UserStatus.activated);
+        driverLicense = license;
+        nationalID = id;
+        favouriteAreas = new ArrayList<>();
+        rides = new ArrayList<>();
+        rating = new Rating();
     }
 
     public void setDriverLicense(String driverLicense) {

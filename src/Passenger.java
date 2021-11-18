@@ -5,8 +5,8 @@ public class Passenger extends User{
     private ArrayList<Ride>pastRides;
     private Ride currentRide;
 
-    public Passenger(String username, String mobileNumber, String email, String password, UserStatus userStatus) {
-        super (username, mobileNumber, email, password, userStatus);
+    public Passenger(String username, String mobileNumber, String email, String password) {
+        super (username, mobileNumber, email, password, UserStatus.activated);
         pastRides = new ArrayList<Ride>();
     }
 

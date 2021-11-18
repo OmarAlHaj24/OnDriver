@@ -4,6 +4,10 @@ public class Area implements AreaSubject {
     private String location;
     ArrayList<Driver> drivers = new ArrayList<Driver>();
 
+    public Area(String location){
+        this.location = location;
+    }
+
     public String getLocation() {
         return location;
     }
