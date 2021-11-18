@@ -5,6 +5,14 @@ public abstract class User {
     private String password;
     private UserStatus userStatus;
 
+    public User(String username, String mobileNumber, String email, String password, UserStatus userStatus){
+        this.username = username;
+        this.mobileNumber = mobileNumber;
+        this.password = password;
+        this.email = email;
+        this.userStatus =userStatus;
+    }
+
     public String getUsername() {
         return username;
     }

@@ -150,7 +150,7 @@ public class ListManager implements DataManager {
     @Override
     public Admin getAdmin(String username) {
         for(int i = 0; i < listOfAdmin.size(); i++){
-            if(username.equals(listOfAdmin.get(i).username)){
+            if(username.equals(listOfAdmin.get(i).getUsername())){
                 return listOfAdmin.get(i);
             }
         }
