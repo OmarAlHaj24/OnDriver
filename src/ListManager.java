@@ -129,12 +129,14 @@ public class ListManager implements DataManager {
 
     @Override
     public Area getArea(String location) {
-        for (int i = 0; i < listOfDrivers.size(); i++) {
+        for (int i = 0; i < listOfAreas.size(); i++) {
             if (location.equals(listOfAreas.get(i).getLocation())) {
                 return listOfAreas.get(i);
             }
         }
-        return new Area(location);
+        Area area = new Area(location);
+        listOfAreas.add(area);
+        return area;
     }
 
     @Override

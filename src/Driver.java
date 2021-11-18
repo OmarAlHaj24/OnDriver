@@ -79,6 +79,7 @@ public class Driver extends User implements DriverObserver {
 
     public void addFavArea(Area area) {
         favouriteAreas.add(area);
+        area.subscribe(this);
     }
 
     public void listFavouriteAreas() {

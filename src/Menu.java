@@ -150,7 +150,6 @@ public class Menu {
                 System.out.println("Enter Source and Destination: ");
                 String s = sc.nextLine();
                 Area source = manager.getArea(s);
-
                 String d = sc.nextLine();
                 Area destination = manager.getArea(d);
                 Ride ride = new Ride(source, destination, (Passenger) IdentityManager.currentUser);
