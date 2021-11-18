@@ -21,7 +21,6 @@ public class Driver extends User implements DriverObserver {
     public void setDriverLicense(String driverLicense) {
         this.driverLicense = driverLicense;
     }
-
     public String getDriverLicense() {
         return driverLicense;
     }
@@ -29,7 +28,6 @@ public class Driver extends User implements DriverObserver {
     public void setNationalID(String nationalID) {
         this.nationalID = nationalID;
     }
-
     public String getNationalID() {
         return nationalID;
     }
@@ -37,7 +35,6 @@ public class Driver extends User implements DriverObserver {
     public void setVerified(Boolean verified) {
         isVerified = verified;
     }
-
     public Boolean getVerified() {
         return isVerified;
     }
@@ -45,7 +42,6 @@ public class Driver extends User implements DriverObserver {
     public void setFavouriteAreas(List<Area> favouriteAreas) {
         this.favouriteAreas = favouriteAreas;
     }
-
     public List<Area> getFavouriteAreas() {
         return favouriteAreas;
     }
@@ -53,7 +49,6 @@ public class Driver extends User implements DriverObserver {
     public void setRides(List<Ride> rides) {
         this.rides = rides;
     }
-
     public List<Ride> getRides() {
         return rides;
     }
@@ -61,7 +56,6 @@ public class Driver extends User implements DriverObserver {
     public void setRating(Rating rating) {
         this.rating = rating;
     }
-
     public Rating getRating() {
         return rating;
     }
@@ -97,4 +91,6 @@ public class Driver extends User implements DriverObserver {
     public void update(Ride ride) {
         rides.add(ride);
     }
+
+
 }
