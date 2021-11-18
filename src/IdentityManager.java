@@ -24,6 +24,9 @@ public class IdentityManager {
 
     public static Boolean loginAsPassenger(String username, String password){
         Passenger tempPassenger = manager.getPassenger(username);
+        if(tempPassenger == null){
+            return false;
+        }
         if(tempPassenger.getPassword().equals(password)){
             currentUser = tempPassenger;
             return true;
@@ -34,6 +37,9 @@ public class IdentityManager {
 
     public static Boolean loginAsDriver(String username, String password){
         Driver tempDriver = manager.getDriver(username);
+        if(tempDriver == null){
+            return false;
+        }
         if(tempDriver.getPassword().equals(password)){
             currentUser = tempDriver;
             return true;
@@ -44,6 +50,9 @@ public class IdentityManager {
 
     public static Boolean loginAsAdmin(String username, String password){
         Admin tempAdmin = manager.getAdmin(username);
+        if(tempAdmin == null){
+            return false;
+        }
         if(tempAdmin.getPassword().equals(password)){
             currentUser = tempAdmin;
             return true;
