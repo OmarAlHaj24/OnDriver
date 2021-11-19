@@ -81,12 +81,12 @@ public class Ride {
 
     public String toString() {
         return "Source: " + source.getLocation() + "\n" + "Destination: " + destination.getLocation() + "\nPassenger username: " +
-                passenger.getUsername() + "\n Passenger phone number: " + passenger.getMobileNumber();
+                passenger.getUsername() + "\nPassenger phone number: " + passenger.getMobileNumber();
     }
 
     public String toStringPassenger(){
         return "Source: " + source.getLocation() + "\n" + "Destination: " + destination.getLocation() + "\nDriver username: " +
                 acceptedOffer.getDriver().getUsername() + "\ndriver phone number: " + acceptedOffer.getDriver().getMobileNumber()
-                + "\ndriver license" + acceptedOffer.getDriver().getDriverLicense() + "\ndriver average rating: " + acceptedOffer.getDriver().getRating().getAverageRating();
+                + "\ndriver license: " + acceptedOffer.getDriver().getDriverLicense() + "\ndriver average rating: " + acceptedOffer.getDriver().getRating().getAverageRating();
     }
 }

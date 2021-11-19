@@ -20,7 +20,7 @@ public class Rating {
     public void viewAllRating() {
 
         for (Map.Entry<Ride, Integer> set : driverRatings.entrySet()) {
-            System.out.println(set.getKey() + " : " + set.getValue());
+            System.out.println(set.getKey().getPassenger().getUsername() + " : " + set.getValue());
         }
     }
 }

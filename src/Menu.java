@@ -169,6 +169,11 @@ public class Menu {
                         int rating = sc.nextInt();
                         if (!((Passenger) IdentityManager.currentUser).rateRide(((Passenger) IdentityManager.currentUser).getPastRide(ride), rating)) {
                             System.out.println("You should enter a number between 1 and 5");
+                            System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                            int input2 = sc.nextInt();
+                            if (input2 == 1) {
+                                break;
+                            }
                         }else{
                             break;
                         }
@@ -188,6 +193,11 @@ public class Menu {
                         double rating = ((Passenger) IdentityManager.currentUser).getRating(name);
                         if (rating == -1) {
                             System.out.println("Please enter the correct name of the driver: ");
+                            System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                            int input2 = sc.nextInt();
+                            if (input2 == 1) {
+                                break;
+                            }
                         } else {
                             System.out.println(rating);
                             break;
@@ -249,9 +259,14 @@ public class Menu {
                     int num = sc.nextInt();
                     if (!((Driver) IdentityManager.currentUser).viewRides(num)) {
                         System.out.println("You entered a wrong number");
-                        continue;
+                        System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                        int input2 = sc.nextInt();
+                        if (input2 == 1) {
+                            break;
+                        }
+                    }else {
+                        break;
                     }
-                    break;
                 }
             } else if (choice == 3) {
                 if (!((Driver) IdentityManager.currentUser).listFavouriteAreas()) {
@@ -264,22 +279,32 @@ public class Menu {
                     num = sc.nextInt();
                     if (!((Driver) IdentityManager.currentUser).viewRides(num)) {
                         System.out.println("You entered a wrong number");
-                        continue;
+                        System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                        int input2 = sc.nextInt();
+                        if (input2 == 1) {
+                            break;
+                        }
+                    }else {
+                        break;
                     }
-                    break;
                 }
                 while (true) {
                     System.out.print("Enter Number of Ride you want to make an offer for: ");
                     int num1 = sc.nextInt();
                     if (!((Driver) IdentityManager.currentUser).isRideInArea(num1, num)) {
                         System.out.println("You entered a wrong number");
-                        continue;
+                        System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                        int input2 = sc.nextInt();
+                        if (input2 == 1) {
+                            break;
+                        }
+                    }else {
+                        System.out.print("Enter price to offer: ");
+                        double price = sc.nextDouble();
+                        Offer offer = new Offer(price, (Driver) IdentityManager.currentUser);
+                        ((Driver) IdentityManager.currentUser).suggestOffer(num1, offer);
+                        break;
                     }
-                    System.out.print("Enter price to offer: ");
-                    double price = sc.nextDouble();
-                    Offer offer = new Offer(price, (Driver) IdentityManager.currentUser);
-                    ((Driver) IdentityManager.currentUser).suggestOffer(num1, offer);
-                    break;
                 }
 
         } else if (choice == 4) {
