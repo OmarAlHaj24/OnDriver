@@ -1,10 +1,18 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     DataManager manager = ListManager.getInstance();
-    Scanner sc = new Scanner(System.in);
+    //Scanner sc = new Scanner(System.in);
+    BufferedReader br = new BufferedReader(new FileReader("input.in"));
+    Scanner sc = new Scanner(br);
+
+    public Menu() throws FileNotFoundException {
+    }
 
     public void startMenu() {
         while (true) {
@@ -19,7 +27,7 @@ public class Menu {
             if (input == 1) {
                 System.out.println("=== Register as a passenger ===");
                 while (true) {
-                    System.out.println("Please enter the username you would like to use: ");
+                    System.out.println("Please enter the username you would like to use (spaces not allowed): ");
                     String username = sc.next();
                     System.out.println("Please enter your mobile number: ");
                     String mobileNumber = sc.next();
@@ -41,7 +49,7 @@ public class Menu {
             } else if (input == 2) {
                 System.out.println("=== Register as a driver ===");
                 while (true) {
-                    System.out.println("Please enter the username you would like to use: ");
+                    System.out.println("Please enter the username you would like to use (spaces not allowed): ");
                     String username = sc.next();
                     System.out.println("Please enter your mobile number: ");
                     String mobileNumber = sc.next();
@@ -130,9 +138,6 @@ public class Menu {
     }
 
     public void passengerMenu() {
-        Scanner sc = new Scanner(System.in);
-        int choice;
-
         while (true) {
             System.out.println("=== Passenger menu ===");
             System.out.println("1- Request Ride");
@@ -141,46 +146,79 @@ public class Menu {
             System.out.println("4- Accept Offers");
             System.out.println("5- View Past Rides");
             System.out.println("6- Logout");
-
-            choice = sc.nextInt();
-
+            int choice = sc.nextInt();
             if (choice == 6) {
+                System.out.println("logged out");
                 break;
             } else if (choice == 1) {
                 System.out.println("Enter Source and Destination: ");
-                String s = sc.nextLine();
+                String s = sc.next();
                 Area source = manager.getArea(s);
-                String d = sc.nextLine();
+                String d = sc.next();
                 Area destination = manager.getArea(d);
                 Ride ride = new Ride(source, destination, (Passenger) IdentityManager.currentUser);
                 ((Passenger) IdentityManager.currentUser).requestRide(ride);
                 System.out.println("Ride was successfully requested .. you can check your offers now");
             } else if (choice == 2) {
-                System.out.println("There's List of all past rides");
-                ((Passenger) IdentityManager.currentUser).getPastRides();
-                System.out.println("Enter the number of ride you wanna rate: ");
-                int ride = sc.nextInt();
-                System.out.println("Enter the rating: ");
-                int rating = sc.nextInt();
-                ((Passenger) IdentityManager.currentUser).rateRide(((Passenger) IdentityManager.currentUser).getPastRide(ride), rating);
+                System.out.println("Here is a list of all your past rides");
+                if (((Passenger) IdentityManager.currentUser).listPastRides()) {
+                    System.out.println("Enter the number of ride you would like to rate: ");
+                    int ride = sc.nextInt();
+                    while(true) {
+                        System.out.println("Enter the rating: ");
+                        int rating = sc.nextInt();
+                        if (!((Passenger) IdentityManager.currentUser).rateRide(((Passenger) IdentityManager.currentUser).getPastRide(ride), rating)) {
+                            System.out.println("You should enter a number between 1 and 5");
+                        }else{
+                            break;
+                        }
+                    }
+                } else {
+                    System.out.println("You have no past rides to rate...");
+                }
             } else if (choice == 3) {
                 ((Passenger) IdentityManager.currentUser).checkOffers();
-                boolean end = true;
-                while (end) {
-                    System.out.println("Enter the name of driver you wanna view its average rating:");
-                    String name = sc.next();
-                    ((Passenger) IdentityManager.currentUser).getRating(name);
-                    if (name.isEmpty()) end = false;
+                System.out.println("1- If you would like to check the rating of a certain driver");
+                System.out.println("2- Back");
+                int input = sc.nextInt();
+                if (input == 1) {
+                    while (true) {
+                        System.out.println("Enter the name of the driver whose rating you would like to view: ");
+                        String name = sc.next();
+                        double rating = ((Passenger) IdentityManager.currentUser).getRating(name);
+                        if (rating == -1) {
+                            System.out.println("Please enter the correct name of the driver: ");
+                        } else {
+                            System.out.println(rating);
+                            break;
+                        }
+                    }
                 }
             } else if (choice == 4) {
-                ((Passenger) IdentityManager.currentUser).checkOffers();
-                System.out.println("Enter the number of offer you wanna accept: ");
-                int num = sc.nextInt();
-                ((Passenger) IdentityManager.currentUser).acceptOffer(num);
+                while (true) {
+                    ((Passenger) IdentityManager.currentUser).checkOffers();
+                    System.out.println("Enter the number of offer you would like to accept or enter '-1' to go back: ");
+                    int num = sc.nextInt();
+                    if (num == -1) {
+                        break;
+                    }
+                    if (!((Passenger) IdentityManager.currentUser).acceptOffer(num)) {
+                        System.out.println("You entered a wrong number");
+                        System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
+                        int input2 = sc.nextInt();
+                        if (input2 == 1) {
+                            break;
+                        }
+                    } else {
+                        break;
+                    }
+                }
             } else if (choice == 5) {
-                ((Passenger) IdentityManager.currentUser).getPastRides();
+                if (!((Passenger) IdentityManager.currentUser).listPastRides()) {
+                    System.out.println("You have no past rides, try to ride more with us :)");
+                }
             } else {
-                System.out.println("Wrong, Please enter right number");
+                System.out.println("Please choose a correct number");
             }
         }
     }
@@ -196,70 +234,64 @@ public class Menu {
             int choice = sc.nextInt();
 
             if (choice == 1) {
-                System.out.print("Name of the area: ");
-                String name = sc.nextLine();
+                System.out.print("Please enter Name of the area: ");
+                String name = sc.next();
                 Area area = manager.getArea(name);
                 ((Driver) IdentityManager.currentUser).addFavArea(area);
             } else if (choice == 2) {
-                ((Driver) IdentityManager.currentUser).listFavouriteAreas();
+                if (!((Driver) IdentityManager.currentUser).listFavouriteAreas()) {
+                    continue;
+                }
                 System.out.println();
-                System.out.print("Enter Number of Favorite Area: ");
+
                 while (true) {
+                    System.out.print("Enter Number of Favorite Area: ");
                     int num = sc.nextInt();
-                    if (num >= ((Driver) IdentityManager.currentUser).getFavouriteAreas().size()) {
+                    if (!((Driver) IdentityManager.currentUser).viewRides(num)) {
                         System.out.println("You entered a wrong number");
-                        System.out.println("Enter Number of Favorite Area: ");
                         continue;
                     }
-                    ((Driver) IdentityManager.currentUser).viewRides(num);
                     break;
                 }
             } else if (choice == 3) {
-                ((Driver) IdentityManager.currentUser).listFavouriteAreas();
+                if (!((Driver) IdentityManager.currentUser).listFavouriteAreas()) {
+                    continue;
+                }
                 System.out.println();
-                System.out.print("Enter Number of Favorite Area: ");
+                int num = -1;
                 while (true) {
-                    int num = sc.nextInt();
-                    if (num >= ((Driver) IdentityManager.currentUser).getFavouriteAreas().size()) {
+                    System.out.print("Enter Number of Favorite Area: ");
+                    num = sc.nextInt();
+                    if (!((Driver) IdentityManager.currentUser).viewRides(num)) {
                         System.out.println("You entered a wrong number");
-                        System.out.println("Enter Number of Favorite Area: ");
                         continue;
                     }
-                    ((Driver) IdentityManager.currentUser).viewRides(num);
-                    System.out.print("Enter Number of Ride: ");
-                    Ride ride;
-                    while (true) {
-                        int num1 = sc.nextInt();
-                        if (num1 >= ((Driver) IdentityManager.currentUser).getRides().size()) {
-                            System.out.println("You entered a wrong number");
-                            System.out.println("Enter Number of Ride: ");
-                            continue;
-                        }
-                        if (!((Driver) IdentityManager.currentUser).isRideInArea(num1, num)) {
-                            System.out.println("You entered a wrong number");
-                            System.out.println("Enter Number of Ride: ");
-                            continue;
-                        }
-                        System.out.print("Enter price to offer: ");
-                        Double price = sc.nextDouble();
-                        Offer offer = new Offer(price, (Driver) IdentityManager.currentUser);
-                        ((Driver) IdentityManager.currentUser).suggestOffer(num1, offer);
-                        break;
-                    }
-
                     break;
                 }
-            } else if (choice == 4) {
-                ((Driver) IdentityManager.currentUser).viewRating();
-            } else if (choice == 5) {
-                break;
-            } else {
-                System.out.println("You entered a wrong choice");
-            }
-            System.out.println();
-        }
+                while (true) {
+                    System.out.print("Enter Number of Ride you want to make an offer for: ");
+                    int num1 = sc.nextInt();
+                    if (!((Driver) IdentityManager.currentUser).isRideInArea(num1, num)) {
+                        System.out.println("You entered a wrong number");
+                        continue;
+                    }
+                    System.out.print("Enter price to offer: ");
+                    double price = sc.nextDouble();
+                    Offer offer = new Offer(price, (Driver) IdentityManager.currentUser);
+                    ((Driver) IdentityManager.currentUser).suggestOffer(num1, offer);
+                    break;
+                }
 
+        } else if (choice == 4) {
+            ((Driver) IdentityManager.currentUser).viewRating();
+        } else if (choice == 5) {
+            break;
+        } else {
+            System.out.println("You entered a wrong choice");
+        }
+        System.out.println();
     }
+}
 
     public void adminMenu() {
         while (true) {
@@ -276,33 +308,29 @@ public class Menu {
                     }
                     System.out.println("Please enter the username of the driver you would like to verify: ");
                     String username = sc.next();
-                    Driver tempDriver = manager.getDriver(username);
-                    if (tempDriver == null) {
-                        System.out.println("Please enter a valid driver username");
+                    if(!((Admin)IdentityManager.currentUser).verifyDriver(username)){
+                        System.out.println("You entered a wrong username");
                         System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
                         int input2 = sc.nextInt();
                         if (input2 == 1) {
                             break;
                         }
                     } else {
-                        tempDriver.setVerified(true);
                         break;
                     }
                 }
             } else if (input == 2) {
                 while (true) {
-                    System.out.println("Please enter the username of the user you would like to suspend: ");
+                    System.out.println("Please enter the username of the driver you would like to suspend: ");
                     String username = sc.next();
-                    User tempUser = manager.getUser(username);
-                    if (tempUser == null) {
-                        System.out.println("Please enter a valid username");
+                    if(!((Admin)IdentityManager.currentUser).suspend(username)){
+                        System.out.println("You entered a wrong username");
                         System.out.println("If you want to go back enter: 1\nIf you want to continue enter: 2");
                         int input2 = sc.nextInt();
                         if (input2 == 1) {
                             break;
                         }
-                    } else {
-                        tempUser.setUserStatus(UserStatus.suspended);
+                    }else {
                         break;
                     }
                 }

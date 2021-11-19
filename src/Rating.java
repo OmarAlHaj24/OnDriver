@@ -13,7 +13,6 @@ public class Rating {
     }
 
     public void addRating(Ride ride, int rating) {
-
         driverRatings.put(ride, rating);
         ratingSum += rating;
     }

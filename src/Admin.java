@@ -1,22 +1,29 @@
+import java.util.List;
+
 public class Admin extends User {
     public Admin(String username, String mobileNumber, String email, String password) {
         super(username, mobileNumber, email, password, UserStatus.admin);
     }
 
-    public void verifyDriver(Driver driver) {
-        driver.setVerified(true);
+    ListManager manager = ListManager.getInstance();
+
+    public boolean verifyDriver(String username) {
+        Driver tempDriver = manager.getDriver(username);
+        if(tempDriver == null){
+            return false;
+        }else{
+            tempDriver.setVerified(true);
+            return true;
+        }
     }
 
     public Boolean suspend(String username) {
-        DataManager manager = ListManager.getInstance();
         User user = manager.getUser(username);
         if (user == null) {
             return false;
+        }else{
+            user.setUserStatus(UserStatus.suspended);
+            return true;
         }
-        if (user.getUserStatus() == UserStatus.suspended) {
-            return false;
-        }
-        user.setUserStatus(UserStatus.suspended);
-        return true;
     }
 }

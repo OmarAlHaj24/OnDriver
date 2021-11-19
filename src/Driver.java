@@ -65,12 +65,15 @@ public class Driver extends User implements DriverObserver {
         ride.addOffer(offer);
     }
 
-    public void viewRides(int index) {
+    public boolean viewRides(int index) {
+        boolean flag = false;
         for (int i = 0; i < rides.size(); i++) {
-            if (rides.get(i).getSource().equals(favouriteAreas.get(index))) {
-                System.out.println(i + " - " + rides.get(i).getSource());
+            if (rides.get(i).getSource().equals(favouriteAreas.get(index)) && !rides.get(i).getAccepted()) {
+                System.out.println(i + " - " + rides.get(i));
+                flag = true;
             }
         }
+        return flag;
     }
 
     public void viewRating() {
@@ -82,10 +85,13 @@ public class Driver extends User implements DriverObserver {
         area.subscribe(this);
     }
 
-    public void listFavouriteAreas() {
+    public boolean listFavouriteAreas() {
+        boolean flag = false;
         for (int i = 0; i < favouriteAreas.size(); i++) {
+            flag = true;
             System.out.println(i + " - " + favouriteAreas.get(i).getLocation());
         }
+        return flag;
     }
 
     @Override
@@ -94,10 +100,14 @@ public class Driver extends User implements DriverObserver {
     }
 
     public Boolean isRideInArea(int ride, int area){
+        if(ride >= rides.size() || ride < 0){
+            return false;
+        }
         Ride r = rides.get(ride);
         Area a = favouriteAreas.get(area);
-        if(r.getSource() == a)
+        if(r.getSource().equals(a) && !r.getAccepted()){
             return true;
+        }
         return false;
     }
 
