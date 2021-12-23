@@ -30,3 +30,14 @@
 
 2 - Suspend user: http://localhost:8080/admin/suspend/(User name)
 
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+1- Add Favourite Area: http://localhost:8080/driver/addFavouriteArea/{{currentUsername}}/{{areaName}}
+
+2- List Favourite Areas: http://localhost:8080/driver/ListFavouriteArea/{{currentUsername}}
+
+3- View Rides of an Area: http://localhost:8080/driver/viewRides/{{currentUsername}}/{{areaNum}}
+
+4- Suggest an offer to a ride: http://localhost:8080/driver/suggestOffer/{{currentUsername}}/{{rideNum}}/{{offerPrice}}
+
+5- View user's rating: http://localhost:8080/driver/viewRating/{{currentUsername}}

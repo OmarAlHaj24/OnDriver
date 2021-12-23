@@ -1,5 +1,6 @@
 package com.API.OnDriver;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,10 +20,11 @@ public class Rating {
         ratingSum += rating;
     }
 
-    public void viewAllRating() {
-
+    public ArrayList<String> viewAllRating() {
+        ArrayList<String> ratings = new ArrayList<>();
         for (Map.Entry<Ride, Integer> set : driverRatings.entrySet()) {
-            System.out.println(set.getKey().getPassenger().getUsername() + " : " + set.getValue());
+            ratings.add(set.getKey().getPassenger().getUsername() + " : " + set.getValue());
         }
+        return ratings;
     }
 }

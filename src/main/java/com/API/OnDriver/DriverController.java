@@ -1,4 +1,67 @@
 package com.API.OnDriver;
 
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+@RestController
 public class DriverController {
+    @PostMapping("/driver/addFavouriteArea/{currentUsername}/{areaName}")
+    public String addFavouriteArea(@PathVariable String currentUsername, @PathVariable String areaName) {
+        Driver driver = IdentityManager.getDriver(currentUsername);
+        if (driver == null)
+            return "You have no access to this function";
+        Area area = ListManager.getInstance().getArea(areaName);
+        driver.addFavArea(area);
+        return "Area added successfully";
+    }
+
+    @PostMapping("/driver/ListFavouriteArea/{currentUsername}")
+    public ArrayList<String> listFavouriteAreas(@PathVariable String currentUsername) {
+        Driver driver = IdentityManager.getDriver(currentUsername);
+        if (driver == null) {
+            ArrayList<String> temp = new ArrayList<>();
+            temp.add("You have no access to this function");
+            return temp;
+        }
+        return driver.listFavouriteAreas();
+    }
+
+
+    @PostMapping("/driver/viewRides/{currentUsername}/{areaNum}")
+    public ArrayList<String> viewRide(@PathVariable String currentUsername, @PathVariable int areaNum) {
+        Driver driver = IdentityManager.getDriver(currentUsername);
+        if (driver == null) {
+            ArrayList<String> temp = new ArrayList<>();
+            temp.add("You have no access to this function");
+            return temp;
+        }
+        return driver.viewRides(areaNum);
+    }
+
+    @PostMapping("/driver/suggestOffer/{currentUsername}/{rideNum}/{offerPrice}")
+    public String suggestOffer(@PathVariable String currentUsername, @PathVariable int rideNum, @PathVariable double offerPrice) {
+        Driver driver = IdentityManager.getDriver(currentUsername);
+        if (driver == null)
+            return "You have no access to this function";
+        Offer offer = new Offer(offerPrice, driver);
+        driver.suggestOffer(rideNum, offer);
+        return "Your offer was sent successfully. Please wait for the passenger's response";
+    }
+
+    @PostMapping("/driver/viewRating/{currentUsername}")
+    public ArrayList<String> viewRating(@PathVariable String currentUsername) {
+        Driver driver = IdentityManager.getDriver(currentUsername);
+        if (driver == null) {
+            ArrayList<String> temp = new ArrayList<>();
+            temp.add("You have no access to this function");
+            return temp;
+        }
+        return driver.viewRating();
+    }
+
+
 }

@@ -86,7 +86,7 @@ public class Ride {
                 passenger.getUsername() + "\nPassenger phone number: " + passenger.getMobileNumber();
     }
 
-    public String toStringPassenger(){
+    public String toStringPassenger() {
         return "Source: " + source.getLocation() + "\n" + "Destination: " + destination.getLocation() + "\nDriver username: " +
                 acceptedOffer.getDriver().getUsername() + "\ndriver phone number: " + acceptedOffer.getDriver().getMobileNumber()
                 + "\ndriver license: " + acceptedOffer.getDriver().getDriverLicense() + "\ndriver average rating: " + acceptedOffer.getDriver().getRating().getAverageRating();

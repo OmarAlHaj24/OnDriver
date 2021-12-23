@@ -1,7 +1,9 @@
 package com.API.OnDriver;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Driver extends User implements DriverObserver {
     private String driverLicense;
@@ -23,6 +25,7 @@ public class Driver extends User implements DriverObserver {
     public void setDriverLicense(String driverLicense) {
         this.driverLicense = driverLicense;
     }
+
     public String getDriverLicense() {
         return driverLicense;
     }
@@ -30,6 +33,7 @@ public class Driver extends User implements DriverObserver {
     public void setNationalID(String nationalID) {
         this.nationalID = nationalID;
     }
+
     public String getNationalID() {
         return nationalID;
     }
@@ -37,6 +41,7 @@ public class Driver extends User implements DriverObserver {
     public void setVerified(Boolean verified) {
         isVerified = verified;
     }
+
     public Boolean getVerified() {
         return isVerified;
     }
@@ -44,6 +49,7 @@ public class Driver extends User implements DriverObserver {
     public void setFavouriteAreas(List<Area> favouriteAreas) {
         this.favouriteAreas = favouriteAreas;
     }
+
     public List<Area> getFavouriteAreas() {
         return favouriteAreas;
     }
@@ -51,6 +57,7 @@ public class Driver extends User implements DriverObserver {
     public void setRides(List<Ride> rides) {
         this.rides = rides;
     }
+
     public List<Ride> getRides() {
         return rides;
     }
@@ -58,6 +65,7 @@ public class Driver extends User implements DriverObserver {
     public void setRating(Rating rating) {
         this.rating = rating;
     }
+
     public Rating getRating() {
         return rating;
     }
@@ -67,19 +75,26 @@ public class Driver extends User implements DriverObserver {
         ride.addOffer(offer);
     }
 
-    public boolean viewRides(int index) {
+    public ArrayList<String> viewRides(int index) {
         boolean flag = false;
+        ArrayList<String> ridesPrint = new ArrayList<>();
         for (int i = 0; i < rides.size(); i++) {
             if (rides.get(i).getSource().equals(favouriteAreas.get(index)) && !rides.get(i).getAccepted()) {
-                System.out.println(i + " - " + rides.get(i));
+                ridesPrint.add((i + 1) + "- " + rides.get(i));
                 flag = true;
             }
         }
-        return flag;
+        if (!flag) {
+            ridesPrint.add("There isn't any requested rides in area");
+        }
+        return ridesPrint;
     }
 
-    public void viewRating() {
-        rating.viewAllRating();
+    public ArrayList<String> viewRating() {
+        ArrayList<String> ratings = rating.viewAllRating();
+        if (ratings.size() == 0)
+            ratings.add("There is not any ratings for you yet");
+        return ratings;
     }
 
     public void addFavArea(Area area) {
@@ -87,13 +102,18 @@ public class Driver extends User implements DriverObserver {
         area.subscribe(this);
     }
 
-    public boolean listFavouriteAreas() {
+    public ArrayList<String> listFavouriteAreas() {
         boolean flag = false;
+        ArrayList<String> areas = new ArrayList<>();
         for (int i = 0; i < favouriteAreas.size(); i++) {
             flag = true;
-            System.out.println(i + " - " + favouriteAreas.get(i).getLocation());
+            //String temp = (i+1) + favouriteAreas.get(i).getLocation();
+            areas.add((i + 1) + "- " + favouriteAreas.get(i).getLocation());
         }
-        return flag;
+        if (!flag) {
+            areas.add("No favourite areas");
+        }
+        return areas;
     }
 
     @Override
@@ -101,21 +121,9 @@ public class Driver extends User implements DriverObserver {
         rides.add(ride);
     }
 
-    public Boolean isRideInArea(int ride, int area){
-        if(ride >= rides.size() || ride < 0){
-            return false;
-        }
-        Ride r = rides.get(ride);
-        Area a = favouriteAreas.get(area);
-        if(r.getSource().equals(a) && !r.getAccepted()){
-            return true;
-        }
-        return false;
-    }
-
     @Override
-    public String toString(){
-        return super.toString ()+"Driver License: "+ getDriverLicense ()+"\n"+"National ID: "+getNationalID ()+"\n";
+    public String toString() {
+        return super.toString() + "Driver License: " + getDriverLicense() + "\n" + "National ID: " + getNationalID() + "\n";
     }
 
 }
