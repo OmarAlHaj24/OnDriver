@@ -24,27 +24,6 @@
 
 6 - Logout: http://localhost:8080/logout/(Username)
 
-7 - Passenger requests ride: http://localhost:8080/passenger/request 
-{
-    "source":"a",
-    "destination":"b",
-    "Passenger":"Omar"
-}
-
-8 - Passenger rate ride: http://localhost:8080/passenger/rateRide/(rate)
-{
-    "source":"a",
-    "destination":"b",
-    "Passenger":"omar"
-}
-
-9 - Passenger checks offers: http://localhost:8080/passenger/checkOffers
-
-10 - Passenger accepts offers: http://localhost:8080/passenger/acceptOffers/(offerNum)
-
-11 - Passenger views past rides: http://localhost:8080/passenger/viewPastRides
-
-
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 1 - Verify driver: http://localhost:8080/admin/verify/(Driver name)
@@ -62,3 +41,25 @@
 4- Suggest an offer to a ride: http://localhost:8080/driver/suggestOffer/{{currentUsername}}/{{rideNum}}/{{offerPrice}}
 
 5- View user's rating: http://localhost:8080/driver/viewRating/{{currentUsername}}
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+1 - Passenger requests ride: http://localhost:8080/passenger/request/(currentUsername) 
+{
+    "source":"a",
+    "destination":"b",
+    "Passenger":"Omar"
+}
+
+2 - Passenger rate ride: http://localhost:8080/passenger/rateRide/(currentUsername)/(rate)
+{
+    "source":"a",
+    "destination":"b",
+    "Passenger":"omar"
+}
+
+3 - Passenger checks offers: http://localhost:8080/passenger/cviewOffers/(currentUsername)
+
+4 - Passenger accepts offers: http://localhost:8080/passenger/acceptOffers/(currentUsername)/(offerNum)
+
+5 - Passenger views past rides: http://localhost:8080/passenger/viewPastRides/(currentUsername)
