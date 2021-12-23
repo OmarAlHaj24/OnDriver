@@ -1,6 +1,5 @@
 package com.API.OnDriver;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Ride {
@@ -71,10 +70,11 @@ public class Ride {
         offers.add(offer);
     }
 
-    public void viewOffers() {
+    public Ride viewOffers() {
         for (int i = 0; i < offers.size(); i++) {
             System.out.println(i + "- " + offers.get(i));
         }
+        return null; ////////
     }
 
     public void setOffer(int offerNumber) {
