@@ -1,8 +1,10 @@
+package com.API.OnDriver;
+
 import java.util.ArrayList;
 
 public class Area implements AreaSubject {
     private String location;
-    protected ArrayList<Driver> drivers = new ArrayList<Driver>();
+    ArrayList<Driver> drivers = new ArrayList<Driver>();
 
     public Area(String location) {
         this.location = location;

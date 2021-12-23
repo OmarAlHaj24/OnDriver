@@ -1,0 +1,32 @@
+1 - Register as passenger: http://localhost:8080/register/passenger
+{
+    "username":"Omar",
+    "mobileNumber":"01019354475",
+    "email":"omaralhaj24@gmail.com",
+    "password":"123secure"
+}
+
+2 - Register as driver: http://localhost:8080/register/driver
+{
+    "username":"Alaa",
+    "mobileNumber":"01019354456",
+    "email":"alaamahmoud@gmail.com",
+    "password":"123secure",
+    "license":"7777",
+    "id":55
+}
+
+3 - Login as passenger: http://localhost:8080/login/passenger/Omar/123secure
+
+4 - Login as driver: http://localhost:8080/login/driver/Alaa/123secure (Driver needs to be verified by an admin before he can log in)
+
+5 - Login as admin: http://localhost:8080/login/admin/admin/admin
+
+6 - Logout: http://localhost:8080/logout/(Username)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+1 - Verify driver: http://localhost:8080/admin/verify/(Driver name)
+
+2 - Suspend user: http://localhost:8080/admin/suspend/(User name)
+
