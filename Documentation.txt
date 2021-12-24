@@ -31,6 +31,10 @@
 
 2 - Suspend user: http://localhost:8080/admin/suspend/(User name)
 
+3 - Get all system rides: http://localhost:8080/admin/getSystemRides
+
+4 - Get the events of a ride: http://localhost:8080/admin/getSystemRides/(idx)
+
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 1- Add Favourite Area: http://localhost:8080/driver/addFavouriteArea/(currentUsername)/(areaName)
