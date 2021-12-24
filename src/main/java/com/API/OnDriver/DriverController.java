@@ -13,7 +13,7 @@ public class DriverController {
     public String addFavouriteArea(@PathVariable String currentUsername, @PathVariable String areaName) {
         Driver driver = IdentityManager.getDriver(currentUsername);
         if (driver == null)
-            return "You have no access to this function";
+            return "You're either not logged in or you have no access to this function";
         Area area = ListManager.getInstance().getArea(areaName);
         driver.addFavArea(area);
         return "Area added successfully";
@@ -24,7 +24,7 @@ public class DriverController {
         Driver driver = IdentityManager.getDriver(currentUsername);
         if (driver == null) {
             ArrayList<String> temp = new ArrayList<>();
-            temp.add("You have no access to this function");
+            temp.add("You're either not logged in or you have no access to this function");
             return temp;
         }
         return driver.listFavouriteAreas();
@@ -36,7 +36,7 @@ public class DriverController {
         Driver driver = IdentityManager.getDriver(currentUsername);
         if (driver == null) {
             ArrayList<String> temp = new ArrayList<>();
-            temp.add("You have no access to this function");
+            temp.add("You're either not logged in or you have no access to this function");
             return temp;
         }
         return driver.viewRides(areaNum);
@@ -46,7 +46,7 @@ public class DriverController {
     public String suggestOffer(@PathVariable String currentUsername, @PathVariable int rideNum, @PathVariable double offerPrice) {
         Driver driver = IdentityManager.getDriver(currentUsername);
         if (driver == null)
-            return "You have no access to this function";
+            return "You're either not logged in or you have no access to this function";
         Offer offer = new Offer(offerPrice, driver);
         driver.suggestOffer(rideNum, offer);
         return "Your offer was sent successfully. Please wait for the passenger's response";
@@ -57,11 +57,9 @@ public class DriverController {
         Driver driver = IdentityManager.getDriver(currentUsername);
         if (driver == null) {
             ArrayList<String> temp = new ArrayList<>();
-            temp.add("You have no access to this function");
+            temp.add("You're either not logged in or you have no access to this function");
             return temp;
         }
         return driver.viewRating();
     }
-
-
 }

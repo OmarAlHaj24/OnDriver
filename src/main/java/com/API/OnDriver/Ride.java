@@ -17,24 +17,8 @@ public class Ride {
         acceptedOffer = null;
     }
 
-    public void setSource(Area source) {
-        this.source = source;
-    }
-
     public Area getSource() {
         return source;
-    }
-
-    public void setDestination(Area destination) {
-        this.destination = destination;
-    }
-
-    public Area getDestination() {
-        return destination;
-    }
-
-    public void setPassenger(Passenger passenger) {
-        this.passenger = passenger;
     }
 
     public Passenger getPassenger() {
@@ -50,16 +34,8 @@ public class Ride {
         return acceptedOffer;
     }
 
-    public void setOffers(ArrayList<Offer> offers) {
-        this.offers = offers;
-    }
-
     public ArrayList<Offer> getOffers() {
         return offers;
-    }
-
-    public void setAccepted(Boolean accepted) {
-        isAccepted = accepted;
     }
 
     public Boolean getAccepted() {
@@ -70,15 +46,17 @@ public class Ride {
         offers.add(offer);
     }
 
-    public Ride viewOffers() {
+    public ArrayList<String> viewOffers() {
+        boolean flag = false;
+        ArrayList<String> offers_ = new ArrayList<>();
         for (int i = 0; i < offers.size(); i++) {
-            System.out.println(i + "- " + offers.get(i));
+            flag = true;
+            offers_.add(i + "- " + offers.get(i));
         }
-        return null; ////////
-    }
-
-    public void setOffer(int offerNumber) {
-        acceptedOffer = offers.get(offerNumber);
+        if(!flag){
+            offers_.add("No offers yet");
+        }
+        return offers_;
     }
 
     public String toString() {

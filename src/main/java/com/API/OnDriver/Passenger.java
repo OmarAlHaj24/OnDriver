@@ -17,10 +17,6 @@ public class Passenger extends User {
         this.pastRides = pastRides;
     }
 
-    public List<Ride> getPastRides() {
-        return pastRides;
-    }
-
     public void setCurrentRide(Ride currentRide) {
         this.currentRide = currentRide;
     }
@@ -56,8 +52,8 @@ public class Passenger extends User {
         return avgRating;
     }
 
-    public void checkOffers() {
-        currentRide.viewOffers();
+    public ArrayList<String> checkOffers() {
+        return currentRide.viewOffers();
     }
 
     public boolean acceptOffer(int offerNum) {
@@ -79,7 +75,7 @@ public class Passenger extends User {
             rides.add ( temp );
             flag = true;
         }
-        if (flag == false) {
+        if (!flag) {
             rides.add ( "There's no past rides" );
         }
         return rides;
