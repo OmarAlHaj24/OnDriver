@@ -55,7 +55,7 @@ public class Ride {
         ArrayList<String> offers_ = new ArrayList<>();
         for (int i = 0; i < offers.size(); i++) {
             flag = true;
-            offers_.add(i + "- " + offers.get(i));
+            offers_.add((i+1) + "- " + offers.get(i));
         }
         if (!flag) {
             offers_.add("No offers yet");
@@ -76,13 +76,13 @@ public class Ride {
     }
 
     public String toString() {
-        return "Source: " + source.getLocation() + "\n" + "Destination: " + destination.getLocation() + "\nPassenger username: " +
-                passenger.getUsername() + "\nPassenger phone number: " + passenger.getMobileNumber();
+        return "Source: " + source.getLocation() + " || " + "Destination: " + destination.getLocation() + " || Passenger username: " +
+                passenger.getUsername() + " || Passenger phone number: " + passenger.getMobileNumber();
     }
 
     public String toStringPassenger() {
-        return "Source: " + source.getLocation() + "\n" + "Destination: " + destination.getLocation() + "\nDriver username: " +
-                acceptedOffer.getDriver().getUsername() + "\ndriver phone number: " + acceptedOffer.getDriver().getMobileNumber()
-                + "\ndriver license: " + acceptedOffer.getDriver().getDriverLicense() + "\ndriver average rating: " + acceptedOffer.getDriver().getRating().getAverageRating();
+        return "Source: " + source.getLocation() + " || " + "Destination: " + destination.getLocation() + " || Driver username: " +
+                acceptedOffer.getDriver().getUsername() + " || driver phone number: " + acceptedOffer.getDriver().getMobileNumber()
+                + " || driver license: " + acceptedOffer.getDriver().getDriverLicense() + " || driver average rating: " + acceptedOffer.getDriver().getRating().getAverageRating();
     }
 }

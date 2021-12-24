@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 @RestController
 public class DriverController {
@@ -39,7 +38,7 @@ public class DriverController {
             temp.add("You're either not logged in or you have no access to this function");
             return temp;
         }
-        return driver.viewRides(areaNum);
+        return driver.viewRides(areaNum-1);
     }
 
     @PostMapping("/driver/suggestOffer/{currentUsername}/{rideNum}/{offerPrice}")
@@ -48,7 +47,7 @@ public class DriverController {
         if (driver == null)
             return "You're either not logged in or you have no access to this function";
         Offer offer = new Offer(offerPrice, driver);
-        driver.suggestOffer(rideNum, offer);
+        driver.suggestOffer(rideNum-1, offer);
         return "Your offer was sent successfully. Please wait for the passenger's response";
     }
 

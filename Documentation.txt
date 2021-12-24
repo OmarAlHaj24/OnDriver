@@ -33,7 +33,7 @@
 
 3 - Get all system rides: http://localhost:8080/admin/getSystemRides
 
-4 - Get the events of a ride: http://localhost:8080/admin/getSystemRides/(idx)
+4 - Get the events of a ride: http://localhost:8080/admin/getRideEvents/(idx)
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -53,7 +53,7 @@
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
-1 - Passenger requests ride: http://localhost:8080/passenger/request/(currentUsername)/(source)/(destination)
+1 - Passenger requests ride: http://localhost:8080/passenger/request/(currentUsername)/(source)/(destination)/(numberOfPassengers)
 
 2 - Passenger views past rides: http://localhost:8080/passenger/viewPastRides/(currentUsername)
 

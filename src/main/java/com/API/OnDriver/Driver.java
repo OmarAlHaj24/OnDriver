@@ -118,6 +118,7 @@ public class Driver extends User implements DriverObserver {
         event.addAttribute("Time", dtf.format(now));
         event.addAttribute("Driver Name", getUsername());
         event.addAttribute("Passenger Name", currentRide.getPassenger().getUsername());
+        currentRide.addEvent ( event );
         return true;
     }
 
@@ -132,6 +133,7 @@ public class Driver extends User implements DriverObserver {
         event.addAttribute("Time", dtf.format(now));
         event.addAttribute("Driver Name", getUsername());
         event.addAttribute("Passenger Name", currentRide.getPassenger().getUsername());
+        currentRide.addEvent ( event );
         currentRide = null;
         return true;
     }
@@ -155,7 +157,7 @@ public class Driver extends User implements DriverObserver {
 
     @Override
     public String toString() {
-        return super.toString() + "Driver License: " + getDriverLicense() + "\n" + "National ID: " + getNationalID() + "\n";
+        return super.toString() + "Driver License: " + getDriverLicense() + " || " + "National ID: " + getNationalID() + " || ";
     }
 
 }

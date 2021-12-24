@@ -48,7 +48,7 @@ public class AdminController {
         return currentUser.getSystemRides();
     }
 
-    @PostMapping("/admin/getSystemRides/{idx}")
+    @PostMapping("/admin/getRideEvents/{idx}")
     public ArrayList<String> getRideEvents(@PathVariable int idx) {
         currentUser = IdentityManager.currentAdmin;
         if (IdentityManager.currentAdmin == null) {

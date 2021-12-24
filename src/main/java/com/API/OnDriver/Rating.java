@@ -5,19 +5,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Rating {
-    private HashMap<Ride, Integer> driverRatings = new HashMap<Ride, Integer>();
+    private HashMap<Ride, Integer> driverRatings = new HashMap<>();
     private int ratingSum = 0;
+    private int numberOfRatings = 0;
 
     public double getAverageRating() {
         if (driverRatings.size() == 0) {
             return 0;
         }
-        return 1.0 * ratingSum / driverRatings.size();
+        return 1.0 * ratingSum / numberOfRatings;
     }
 
-    public void addRating(Ride ride, int rating) {
-        driverRatings.put(ride, rating);
-        ratingSum += rating;
+    public boolean addRating(Ride ride, int rating) {
+        if(driverRatings.get(ride) == null){
+            driverRatings.put(ride, rating);
+            numberOfRatings++;
+            ratingSum += rating;
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<String> viewAllRating() {

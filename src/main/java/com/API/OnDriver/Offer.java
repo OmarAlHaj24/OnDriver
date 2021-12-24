@@ -28,7 +28,7 @@ public class Offer {
     @Override
     public String toString() {
         return "price: " + price +
-                ", driver name: " + driver.getUsername() + ", driver phone number: " + driver.getMobileNumber()
-                + ", driver license" + driver.getDriverLicense() + ", driver average rating: " + driver.getRating().getAverageRating();
+                " || driver name: " + driver.getUsername() + " || driver phone number: " + driver.getMobileNumber()
+                + " || driver license: " + driver.getDriverLicense() + " || driver average rating: " + driver.getRating().getAverageRating();
     }
 }

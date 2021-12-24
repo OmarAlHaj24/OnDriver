@@ -6,11 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="f1fb6be1-2f80-428c-9014-b42318b30075" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documentation.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/ListManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/ListManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/DriverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/DriverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Offer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Passenger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/PassengerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/PassengerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Rating.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Ride.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Ride.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,20 +53,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Spring Boot.OnDriverApplication">
-    <configuration name="OnDriverApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.API.OnDriver.OnDriverApplication" />
-      <module name="OnDriver" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.API.OnDriver.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.OnDriverApplication">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -70,6 +63,19 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OnDriverApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.API.OnDriver.OnDriverApplication" />
+      <module name="OnDriver" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.API.OnDriver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -114,6 +120,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

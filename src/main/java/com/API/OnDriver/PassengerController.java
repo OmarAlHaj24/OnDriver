@@ -3,7 +3,7 @@ package com.API.OnDriver;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 @RestController
 public class PassengerController {
@@ -22,7 +22,7 @@ public class PassengerController {
         return "Ride was requested successfully";
     }
 
-    @GetMapping("/passenger/viewPastRides/{currentUsername}")
+    @PostMapping("/passenger/viewPastRides/{currentUsername}")
     public ArrayList<String> listPastRides(@PathVariable String currentUsername) {
         Passenger passenger = IdentityManager.getPassenger(currentUsername);
         if (passenger == null) {
@@ -39,12 +39,14 @@ public class PassengerController {
         if (passenger == null) {
             return "You're either not logged in or you have no access to this function";
         }
-        Ride temp = passenger.getPastRide(rideIdx);
-        passenger.rateRide(temp, rate);
-        return "Ride was rated successfully";
+        Ride temp = passenger.getPastRide(rideIdx-1);
+        if (passenger.rateRide(temp, rate)){
+            return "Ride was rated successfully";
+        }
+        return "You have already rated this ride or you've entered a wrong number";
     }
 
-    @GetMapping("/passenger/viewOffers/{currentUsername}")
+    @PostMapping("/passenger/viewOffers/{currentUsername}")
     public ArrayList<String> viewOffers(@PathVariable String currentUsername) {
         Passenger passenger = IdentityManager.getPassenger(currentUsername);
         if (passenger == null) {
@@ -62,7 +64,7 @@ public class PassengerController {
         if (passenger == null) {
             return "You're either not logged in or you have no access to this function";
         }
-        if (passenger.acceptOffer(offerNum)) {
+        if (passenger.acceptOffer(offerNum-1)) {
             return "Offer is accepted successfully";
         }
         return "Offer was not accepted, you may have entered a wrong offer number";

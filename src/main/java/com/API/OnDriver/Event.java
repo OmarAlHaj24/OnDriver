@@ -2,38 +2,44 @@ package com.API.OnDriver;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Event {
     private EventName name;
-    private HashMap<String, String> attributes = new HashMap<>();
+    private Map < String, String > attributes = new LinkedHashMap <> ( );
 
-    public void addAttribute(String attribute, String value) {
-        attributes.put(attribute, value);
+    public void addAttribute ( String attribute , String value ) {
+        attributes.put ( attribute , value );
     }
 
-    public void setName(EventName name) {
+    public void setName ( EventName name ) {
         this.name = name;
     }
 
     @Override
-    public String toString() {
+    public String toString ( ) {
         String result = "";
-        if (name == EventName.addedPrice) {
-            result += "Added Price: \n";
+        if ( name == EventName.addedPrice ) {
+            result += "Added Price: ";
 
-        } else if (name == EventName.acceptedOffer) {
-            result += "Accepted Offer: \n";
+        } else if ( name == EventName.acceptedOffer ) {
+            result += "Accepted Offer: ";
 
-        } else if (name == EventName.arrivedToSource) {
-            result += "Arrived To Source: \n";
+        } else if ( name == EventName.arrivedToSource ) {
+            result += "Arrived To Source: ";
 
         } else {
-            result += "Arrived To Destination: \n";
+            result += "Arrived To Destination: ";
 
         }
-        for (HashMap.Entry<String, String> set : attributes.entrySet()) {
-
-            result += set.getKey() + ": " + set.getValue() + "\n";
+        boolean flag = false;
+        for ( Map.Entry < String, String > set : attributes.entrySet ( ) ) {
+            if ( flag ) {
+                result += " || ";
+            }
+            result += set.getKey ( ) + ": " + set.getValue ( );
+            flag = true;
         }
 
         return result;
