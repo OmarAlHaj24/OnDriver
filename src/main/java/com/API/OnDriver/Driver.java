@@ -61,9 +61,9 @@ public class Driver extends User implements DriverObserver {
         LocalDateTime now = LocalDateTime.now();
         Event event = new Event();
         event.setName(EventName.addedPrice);
-        event.addAttribute(dtf.format(now));
-        event.addAttribute(getUsername());
-        event.addAttribute(Double.toString(offer.getPrice()));
+        event.addAttribute("Time", dtf.format(now));
+        event.addAttribute("Driver Name", getUsername());
+        event.addAttribute("Offered Price", Double.toString(offer.getPrice()));
         ride.addEvent(event);
     }
 
@@ -115,9 +115,9 @@ public class Driver extends User implements DriverObserver {
         LocalDateTime now = LocalDateTime.now();
         Event event = new Event();
         event.setName(EventName.arrivedToSource);
-        event.addAttribute(dtf.format(now));
-        event.addAttribute(getUsername());
-        event.addAttribute(currentRide.getPassenger().getUsername());
+        event.addAttribute("Time", dtf.format(now));
+        event.addAttribute("Driver Name", getUsername());
+        event.addAttribute("Passenger Name", currentRide.getPassenger().getUsername());
         return true;
     }
 
@@ -129,9 +129,9 @@ public class Driver extends User implements DriverObserver {
         LocalDateTime now = LocalDateTime.now();
         Event event = new Event();
         event.setName(EventName.arrivedToDestination);
-        event.addAttribute(dtf.format(now));
-        event.addAttribute(getUsername());
-        event.addAttribute(currentRide.getPassenger().getUsername());
+        event.addAttribute("Time", dtf.format(now));
+        event.addAttribute("Driver Name", getUsername());
+        event.addAttribute("Passenger Name", currentRide.getPassenger().getUsername());
         currentRide = null;
         return true;
     }

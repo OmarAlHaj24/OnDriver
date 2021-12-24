@@ -68,9 +68,8 @@ public class Passenger extends User {
         LocalDateTime now = LocalDateTime.now();
         Event event = new Event();
         event.setName(EventName.acceptedOffer);
-        event.addAttribute(dtf.format(now));
-        event.addAttribute(getUsername());
-        event.addAttribute(Double.toString(accepted.getPrice()));
+        event.addAttribute("Time", dtf.format(now));
+        event.addAttribute("Passenger Name", getUsername());
         currentRide.addEvent(event);
         accepted.getDriver().setCurrentRide(currentRide);
         pastRides.add(currentRide);

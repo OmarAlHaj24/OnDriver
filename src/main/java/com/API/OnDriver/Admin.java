@@ -1,7 +1,5 @@
 package com.API.OnDriver;
 
-import java.util.List;
-
 public class Admin extends User {
     public Admin(String username, String mobileNumber, String email, String password) {
         super(username, mobileNumber, email, password, UserStatus.admin);
