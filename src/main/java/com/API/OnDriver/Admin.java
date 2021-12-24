@@ -1,5 +1,7 @@
 package com.API.OnDriver;
 
+import java.util.ArrayList;
+
 public class Admin extends User {
     public Admin(String username, String mobileNumber, String email, String password) {
         super(username, mobileNumber, email, password, UserStatus.admin);
@@ -9,9 +11,9 @@ public class Admin extends User {
 
     public boolean verifyDriver(String username) {
         Driver tempDriver = manager.getDriver(username);
-        if(tempDriver == null){
+        if (tempDriver == null) {
             return false;
-        }else{
+        } else {
             tempDriver.setVerified(true);
             return true;
         }
@@ -21,9 +23,37 @@ public class Admin extends User {
         User user = manager.getUser(username);
         if (user == null) {
             return false;
-        }else{
+        } else {
             user.setUserStatus(UserStatus.suspended);
             return true;
         }
+    }
+
+    public ArrayList<String> getSystemRides() {
+        boolean flag = false;
+        ArrayList<String> areas = new ArrayList<>();
+        ArrayList<Ride> allRides = manager.getAllRides();
+        for (int i = 0; i < allRides.size(); i++) {
+            flag = true;
+            areas.add((i + 1) + "- " + allRides.get(i));
+        }
+        if (!flag) {
+            areas.add("No rides yet");
+        }
+        return areas;
+    }
+
+    public ArrayList<String> getRideEvents(int idx) {
+        boolean flag = false;
+        ArrayList<String> events = new ArrayList<>();
+        Ride ride = manager.getRide(idx);
+        for (int i = 0; i < ride.getEvents().size(); i++) {
+            flag = true;
+            events.add(ride.getEvents().get(i).toString());
+        }
+        if (!flag) {
+            events.add("The ride has no events yet");
+        }
+        return events;
     }
 }

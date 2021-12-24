@@ -11,7 +11,7 @@ public class Passenger extends User {
 
     public Passenger(String username, String mobileNumber, String email, String password) {
         super(username, mobileNumber, email, password, UserStatus.activated);
-        pastRides = new ArrayList<Ride>();
+        pastRides = new ArrayList<>();
         currentRide = null;
     }
 
@@ -28,12 +28,13 @@ public class Passenger extends User {
     }
 
     public void requestRide(Ride ride) {
+        ListManager.getInstance().addRide(ride);
         ride.getSource().notifyDrivers(ride);
         currentRide = ride;
     }
 
     public boolean rateRide(Ride ride, int rate) {
-        if(rate<1 || rate > 5){
+        if (rate < 1 || rate > 5) {
             return false;
         }
         for (int i = 0; i < pastRides.size(); i++) {
@@ -44,10 +45,10 @@ public class Passenger extends User {
         return true;
     }
 
-    public double getRating(String username){
+    public double getRating(String username) {
         double avgRating = -1;
-        for(int i = 0; i < currentRide.getOffers().size(); i++){
-            if(currentRide.getOffers().get(i).getDriver().getUsername().equals(username)){
+        for (int i = 0; i < currentRide.getOffers().size(); i++) {
+            if (currentRide.getOffers().get(i).getDriver().getUsername().equals(username)) {
                 avgRating = currentRide.getOffers().get(i).getDriver().getRating().getAverageRating();
             }
         }
@@ -59,7 +60,7 @@ public class Passenger extends User {
     }
 
     public boolean acceptOffer(int offerNum) {
-        if(offerNum >= currentRide.getOffers().size() || offerNum < 0){
+        if (offerNum >= currentRide.getOffers().size() || offerNum < 0) {
             return false;
         }
         Offer accepted = currentRide.getOffers().get(offerNum);
@@ -79,14 +80,14 @@ public class Passenger extends User {
 
     public ArrayList<String> listPastRides() {
         boolean flag = false;
-        ArrayList<String> rides = new ArrayList<> ();
+        ArrayList<String> rides = new ArrayList<>();
         for (int i = 0; i < pastRides.size(); i++) {
             String temp = i + "- " + pastRides.get(i).toStringPassenger();
-            rides.add ( temp );
+            rides.add(temp);
             flag = true;
         }
         if (!flag) {
-            rides.add ( "There's no past rides" );
+            rides.add("There's no past rides");
         }
         return rides;
     }
@@ -96,7 +97,7 @@ public class Passenger extends User {
     }
 
     @Override
-    public String toString(){
-        return  super.toString ();
+    public String toString() {
+        return super.toString();
     }
 }

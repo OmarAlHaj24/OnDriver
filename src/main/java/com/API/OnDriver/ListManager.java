@@ -16,6 +16,7 @@ public class ListManager implements DataManager {
         listOfDrivers = new ArrayList<>();
         listOfAreas = new ArrayList<>();
         listOfAdmin = new ArrayList<>();
+        listOfRides = new ArrayList<>();
     }
 
     public static ListManager getInstance() {
@@ -163,7 +164,7 @@ public class ListManager implements DataManager {
     }
 
     @Override
-    public List<Ride> getAllRides(){
+    public ArrayList<Ride> getAllRides(){
         return listOfRides;
     }
 

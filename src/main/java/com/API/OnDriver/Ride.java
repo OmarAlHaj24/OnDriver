@@ -57,14 +57,18 @@ public class Ride {
             flag = true;
             offers_.add(i + "- " + offers.get(i));
         }
-        if(!flag){
+        if (!flag) {
             offers_.add("No offers yet");
         }
         return offers_;
     }
 
-    public void addEvent(Event event){
+    public void addEvent(Event event) {
         events.add(event);
+    }
+
+    public ArrayList<Event> getEvents() {
+        return events;
     }
 
     public int getNumberOfPassengers() {
