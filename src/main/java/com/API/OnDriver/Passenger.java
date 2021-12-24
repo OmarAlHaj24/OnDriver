@@ -71,13 +71,18 @@ public class Passenger extends User {
         return true;
     }
 
-    public boolean listPastRides() {
+    public ArrayList<String> listPastRides() {
         boolean flag = false;
+        ArrayList<String> rides = new ArrayList<> ();
         for (int i = 0; i < pastRides.size(); i++) {
-            System.out.println(i + "- " + pastRides.get(i).toStringPassenger());
+            String temp = i + "- " + pastRides.get(i).toStringPassenger();
+            rides.add ( temp );
             flag = true;
         }
-        return flag;
+        if (flag == false) {
+            rides.add ( "There's no past rides" );
+        }
+        return rides;
     }
 
     public Ride getPastRide(int index) {

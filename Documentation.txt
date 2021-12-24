@@ -44,22 +44,14 @@
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
-1 - Passenger requests ride: http://localhost:8080/passenger/request/(currentUsername) 
-{
-    "source":"a",
-    "destination":"b",
-    "Passenger":"Omar"
-}
+1 - Passenger requests ride: http://localhost:8080/passenger/request/(currentUsername)/(source)/(destination)
 
-2 - Passenger rate ride: http://localhost:8080/passenger/rateRide/(currentUsername)/(rate)
-{
-    "source":"a",
-    "destination":"b",
-    "Passenger":"omar"
-}
+2 - Passenger views past rides: http://localhost:8080/passenger/viewPastRides/(currentUsername)
 
-3 - Passenger checks offers: http://localhost:8080/passenger/cviewOffers/(currentUsername)
+3 - Passenger rate ride: http://localhost:8080/passenger/rateRide/(currentUsername)/(rate)
 
-4 - Passenger accepts offers: http://localhost:8080/passenger/acceptOffers/(currentUsername)/(offerNum)
+4 - Passenger checks offers: http://localhost:8080/passenger/cviewOffers/(currentUsername)
 
-5 - Passenger views past rides: http://localhost:8080/passenger/viewPastRides/(currentUsername)
+5 - Passenger accepts offers: http://localhost:8080/passenger/acceptOffers/(currentUsername)/(offerNum)
+
+

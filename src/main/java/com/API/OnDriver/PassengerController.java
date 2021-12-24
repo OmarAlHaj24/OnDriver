@@ -10,30 +10,39 @@ public class PassengerController {
     private Ride currentRide;
     private ArrayList <Ride> pastRides;
 
-    @PostMapping("/passenger/request/{currentUsername}")
-    public String requestRide(@RequestBody Ride ride,@PathVariable String currentUsername) {
+    @PostMapping("/passenger/request/{currentUsername}/{source}/{destination}")
+    public String requestRide(@PathVariable String currentUsername, @PathVariable Area source, @PathVariable Area destination){
         Passenger passenger = IdentityManager.getPassenger ( currentUsername );
-        if (passenger==null){
+        if (passenger == null){
             return "You have no access to this functionality!!";
         }
-
-        passenger.requestRide (ride);
+        Ride ride = new Ride ( source,destination,passenger );
+        passenger.requestRide ( ride );
         return "Ride was requested successfully";
     }
 
-    @PostMapping("/passenger/rateRide/{currentUsername}/{rate}")
-    public String rateRide(@RequestBody Ride ride, @PathVariable int rate, @PathVariable String currentUsername) {
+    @GetMapping("/passenger/viewPastRides/{currentUsername}")
+    public ArrayList<String> listPastRides(@PathVariable String currentUsername){
         Passenger passenger = IdentityManager.getPassenger ( currentUsername );
-        if (passenger==null){
-            return "You have no access to this functionality!!";
+        ArrayList<String> rides = new ArrayList <> ();
+        if (passenger == null){
+            rides.add( "You have no access to this functionality!!");
+            return rides;
         }
-        if (rate <0 || rate>5 ){
-            return "Wrong enter of rating!";
-        }
-        passenger.rateRide ( ride,rate );
-        return "ride was successfuly rated";
+        rides = passenger.listPastRides ();
+        return rides;
     }
 
+    @PostMapping("/passenger/rateRide/{currentUsername}/{rate}")
+    public String rateRide(@PathVariable String currentUsername,@PathVariable int indexRide ,@PathVariable int rate){
+        Passenger passenger = IdentityManager.getPassenger ( currentUsername );
+        if (passenger == null){
+            return "You have no access to this functionality!!";
+        }
+        Ride temp = passenger.getPastRide ( indexRide );
+        passenger.rateRide ( temp,rate );
+        return "ride was rated successfully";
+    }
 
     @GetMapping("/passenger/viewOffers/{currentUsername}")
     public int viewOffers(@PathVariable String currentUsername) {
@@ -56,16 +65,6 @@ public class PassengerController {
             return "Offer is accepted successfully";
         };
         return "Offer is not accepted !!";
-    }
-
-    @PostMapping("/passenger/viewPastRides/{currentUsername}")
-    public String listPastRides(@PathVariable String currentUsername) {
-        Passenger passenger = IdentityManager.getPassenger ( currentUsername );
-        if (passenger==null){
-            return "You have no access to this functionality!!";
-        }
-        passenger.listPastRides ();
-        return "All Past rides viewed successfully";
     }
 
 
