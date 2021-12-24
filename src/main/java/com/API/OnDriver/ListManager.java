@@ -9,6 +9,7 @@ public class ListManager implements DataManager {
     private ArrayList<Driver> listOfDrivers;
     private ArrayList<Area> listOfAreas;
     private ArrayList<Admin> listOfAdmin;
+    private ArrayList<Ride> listOfRides;
 
     private ListManager() {
         listOfPassengers = new ArrayList<Passenger>();
@@ -159,5 +160,20 @@ public class ListManager implements DataManager {
             }
         }
         return null;
+    }
+
+    @Override
+    public List<Ride> getAllRides(){
+        return listOfRides;
+    }
+
+    @Override
+    public Ride getRide(int idx){
+        return listOfRides.get(idx - 1);
+    }
+
+    @Override
+    public void addRide(Ride ride){
+        listOfRides.add(ride);
     }
 }

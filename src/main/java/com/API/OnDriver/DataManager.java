@@ -24,4 +24,10 @@ public interface DataManager {
     public Boolean addToAdmin(Admin admin);
 
     public Admin getAdmin(String username);
+
+    public List<Ride> getAllRides();
+
+    public Ride getRide(int idx);
+
+    public void addRide(Ride ride);
 }
