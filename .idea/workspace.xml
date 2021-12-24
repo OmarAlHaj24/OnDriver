@@ -5,13 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1fb6be1-2f80-428c-9014-b42318b30075" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/EventName.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/OnDriverApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/OnDriverApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/DriverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/DriverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Passenger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Ride.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Ride.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,13 +62,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -83,6 +98,7 @@
       <updated>1640263405321</updated>
       <workItem from="1640263406528" duration="5385000" />
       <workItem from="1640338889819" duration="2779000" />
+      <workItem from="1640357559852" duration="3394000" />
     </task>
     <servers />
   </component>

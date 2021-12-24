@@ -42,6 +42,10 @@
 
 5- View user's rating: http://localhost:8080/driver/viewRating/(currentUsername)
 
+6- Start ride: http://localhost:8080/driver/startRide/(currentUsername)
+
+7- End ride: http://localhost:8080/driver/endRide/(currentUsername)
+
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 1 - Passenger requests ride: http://localhost:8080/passenger/request/(currentUsername)/(source)/(destination)

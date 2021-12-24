@@ -1,9 +1,9 @@
 package com.API.OnDriver;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class Driver extends User implements DriverObserver {
     private String driverLicense;
@@ -12,6 +12,7 @@ public class Driver extends User implements DriverObserver {
     private List<Area> favouriteAreas;
     private List<Ride> rides;
     private Rating rating;
+    private Ride currentRide;
 
     public Driver(String username, String mobileNumber, String email, String password, String license, String id) {
         super(username, mobileNumber, email, password, UserStatus.activated);
@@ -46,26 +47,6 @@ public class Driver extends User implements DriverObserver {
         return isVerified;
     }
 
-    public void setFavouriteAreas(List<Area> favouriteAreas) {
-        this.favouriteAreas = favouriteAreas;
-    }
-
-    public List<Area> getFavouriteAreas() {
-        return favouriteAreas;
-    }
-
-    public void setRides(List<Ride> rides) {
-        this.rides = rides;
-    }
-
-    public List<Ride> getRides() {
-        return rides;
-    }
-
-    public void setRating(Rating rating) {
-        this.rating = rating;
-    }
-
     public Rating getRating() {
         return rating;
     }
@@ -73,6 +54,14 @@ public class Driver extends User implements DriverObserver {
     public void suggestOffer(int idx, Offer offer) {
         Ride ride = rides.get(idx);
         ride.addOffer(offer);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        Event event = new Event();
+        event.setName(EventName.addedPrice);
+        event.addAttribute(dtf.format(now));
+        event.addAttribute(getUsername());
+        event.addAttribute(Double.toString(offer.getPrice()));
+        ride.addEvent(event);
     }
 
     public ArrayList<String> viewRides(int index) {
@@ -107,13 +96,45 @@ public class Driver extends User implements DriverObserver {
         ArrayList<String> areas = new ArrayList<>();
         for (int i = 0; i < favouriteAreas.size(); i++) {
             flag = true;
-            //String temp = (i+1) + favouriteAreas.get(i).getLocation();
             areas.add((i + 1) + "- " + favouriteAreas.get(i).getLocation());
         }
         if (!flag) {
             areas.add("No favourite areas");
         }
         return areas;
+    }
+
+    public boolean startRide(){
+        if(currentRide == null){
+            return false;
+        }
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        Event event = new Event();
+        event.setName(EventName.arrivedToSource);
+        event.addAttribute(dtf.format(now));
+        event.addAttribute(getUsername());
+        event.addAttribute(currentRide.getPassenger().getUsername());
+        return true;
+    }
+
+    public boolean endRide(){
+        if(currentRide == null){
+            return false;
+        }
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        Event event = new Event();
+        event.setName(EventName.arrivedToDestination);
+        event.addAttribute(dtf.format(now));
+        event.addAttribute(getUsername());
+        event.addAttribute(currentRide.getPassenger().getUsername());
+        currentRide = null;
+        return true;
+    }
+
+    public void setCurrentRide(Ride ride){
+        currentRide = ride;
     }
 
     @Override

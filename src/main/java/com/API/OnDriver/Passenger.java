@@ -1,5 +1,7 @@
 package com.API.OnDriver;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +64,15 @@ public class Passenger extends User {
         }
         Offer accepted = currentRide.getOffers().get(offerNum);
         currentRide.setAcceptedOffer(accepted);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        Event event = new Event();
+        event.setName(EventName.acceptedOffer);
+        event.addAttribute(dtf.format(now));
+        event.addAttribute(getUsername());
+        event.addAttribute(Double.toString(accepted.getPrice()));
+        currentRide.addEvent(event);
+        accepted.getDriver().setCurrentRide(currentRide);
         pastRides.add(currentRide);
         currentRide = null;
         return true;

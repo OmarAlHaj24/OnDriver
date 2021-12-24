@@ -9,6 +9,7 @@ public class Ride {
     private Offer acceptedOffer;
     private ArrayList<Offer> offers = new ArrayList<>();
     private Boolean isAccepted = false;
+    private ArrayList<Event> events = new ArrayList<>();
 
     public Ride(Area source, Area destination, Passenger passenger) {
         this.source = source;
@@ -57,6 +58,10 @@ public class Ride {
             offers_.add("No offers yet");
         }
         return offers_;
+    }
+
+    public void addEvent(Event event){
+        events.add(event);
     }
 
     public String toString() {

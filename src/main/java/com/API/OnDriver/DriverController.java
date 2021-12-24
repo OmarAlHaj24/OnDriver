@@ -62,4 +62,28 @@ public class DriverController {
         }
         return driver.viewRating();
     }
+
+    @PostMapping("/driver/startRide/{currentUsername}")
+    public String startRide(@PathVariable String currentUsername){
+        Driver driver = IdentityManager.getDriver(currentUsername);
+        if (driver == null)
+            return "You're either not logged in or you have no access to this function";
+        if(driver.startRide()){
+            return "Ride started successfully";
+        }else{
+            return "You have no current rides";
+        }
+    }
+
+    @PostMapping("/driver/endRide/{currentUsername}")
+    public String endRide(@PathVariable String currentUsername){
+        Driver driver = IdentityManager.getDriver(currentUsername);
+        if (driver == null)
+            return "You're either not logged in or you have no access to this function";
+        if(driver.endRide()){
+            return "Ride ended successfully";
+        }else{
+            return "You have no current rides";
+        }
+    }
 }
