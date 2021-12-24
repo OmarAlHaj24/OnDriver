@@ -32,15 +32,15 @@
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
-1- Add Favourite Area: http://localhost:8080/driver/addFavouriteArea/{{currentUsername}}/{{areaName}}
+1- Add Favourite Area: http://localhost:8080/driver/addFavouriteArea/(currentUsername)/(areaName)
 
-2- List Favourite Areas: http://localhost:8080/driver/ListFavouriteArea/{{currentUsername}}
+2- List Favourite Areas: http://localhost:8080/driver/ListFavouriteArea/(currentUsername)
 
-3- View Rides of an Area: http://localhost:8080/driver/viewRides/{{currentUsername}}/{{areaNum}}
+3- View Rides of an Area: http://localhost:8080/driver/viewRides/(currentUsername)/(areaNum)
 
-4- Suggest an offer to a ride: http://localhost:8080/driver/suggestOffer/{{currentUsername}}/{{rideNum}}/{{offerPrice}}
+4- Suggest an offer to a ride: http://localhost:8080/driver/suggestOffer/(currentUsername)/(rideNum)/(offerPrice)
 
-5- View user's rating: http://localhost:8080/driver/viewRating/{{currentUsername}}
+5- View user's rating: http://localhost:8080/driver/viewRating/(currentUsername)
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -48,9 +48,9 @@
 
 2 - Passenger views past rides: http://localhost:8080/passenger/viewPastRides/(currentUsername)
 
-3 - Passenger rate ride: http://localhost:8080/passenger/rateRide/(currentUsername)/(rate)
+3 - Passenger rate ride: http://localhost:8080/passenger/rateRide/(currentUsername)/(rideIdx)/(rate)
 
-4 - Passenger checks offers: http://localhost:8080/passenger/cviewOffers/(currentUsername)
+4 - Passenger checks offers: http://localhost:8080/passenger/viewOffers/(currentUsername)
 
 5 - Passenger accepts offers: http://localhost:8080/passenger/acceptOffers/(currentUsername)/(offerNum)
 
