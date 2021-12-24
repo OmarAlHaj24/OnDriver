@@ -12,15 +12,15 @@ public class PassengerController {
     private ArrayList<Ride> pastRides;
     ListManager manager = ListManager.getInstance();
 
-    @PostMapping("/passenger/request/{currentUsername}/{source}/{destination}")
-    public String requestRide(@PathVariable String currentUsername, @PathVariable String source, @PathVariable String destination) {
+    @PostMapping("/passenger/request/{currentUsername}/{source}/{destination}/{numberOfPassengers}")
+    public String requestRide(@PathVariable String currentUsername, @PathVariable String source, @PathVariable String destination, @PathVariable int numberOfPassengers) {
         Passenger passenger = IdentityManager.getPassenger(currentUsername);
         if (passenger == null) {
             return "You're either not logged in or you have no access to this function";
         }
         Area source_ = manager.getArea(source);
         Area destination_ = manager.getArea(destination);
-        Ride ride = new Ride(source_, destination_, passenger);
+        Ride ride = new Ride(source_, destination_, passenger, numberOfPassengers);
         passenger.requestRide(ride);
         return "Ride was requested successfully";
     }

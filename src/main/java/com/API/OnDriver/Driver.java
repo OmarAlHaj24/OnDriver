@@ -14,13 +14,16 @@ public class Driver extends User implements DriverObserver {
     private Rating rating;
     private Ride currentRide;
 
-    public Driver(String username, String mobileNumber, String email, String password, String license, String id) {
+    private int numberOfPassengers = 1;
+
+    public Driver(String username, String mobileNumber, String email, String password, String license, String id, int passengerNumber) {
         super(username, mobileNumber, email, password, UserStatus.activated);
         driverLicense = license;
         nationalID = id;
         favouriteAreas = new ArrayList<>();
         rides = new ArrayList<>();
         rating = new Rating();
+        numberOfPassengers = passengerNumber;
     }
 
     public void setDriverLicense(String driverLicense) {
@@ -135,6 +138,14 @@ public class Driver extends User implements DriverObserver {
 
     public void setCurrentRide(Ride ride){
         currentRide = ride;
+    }
+
+    public Ride getCurrentRide(){
+        return currentRide;
+    }
+
+    public int getNumberOfPassengers() {
+        return numberOfPassengers;
     }
 
     @Override

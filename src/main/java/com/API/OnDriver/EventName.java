@@ -4,5 +4,9 @@ public enum EventName {
     addedPrice,
     acceptedOffer,
     arrivedToSource,
-    arrivedToDestination
+    arrivedToDestination;
+    @Override
+    public String toString(){
+        return
+    }
 }

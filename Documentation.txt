@@ -13,7 +13,8 @@
     "email":"alaamahmoud@gmail.com",
     "password":"123secure",
     "license":"7777",
-    "id":55
+    "id":55,
+    "numberOfPassengers":1
 }
 
 3 - Login as passenger: http://localhost:8080/login/passenger/Omar/123secure

@@ -27,7 +27,9 @@ public class Area implements AreaSubject {
     @Override
     public void notifyDrivers(Ride ride) {
         for (int i = 0; i < drivers.size(); i++) {
-            drivers.get(i).update(ride);
+            if(drivers.get(i).getCurrentRide() == null && drivers.get(i).getNumberOfPassengers() == ride.getNumberOfPassengers()){
+                drivers.get(i).update(ride);
+            }
         }
     }
 }

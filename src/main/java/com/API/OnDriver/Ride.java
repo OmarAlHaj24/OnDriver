@@ -11,10 +11,13 @@ public class Ride {
     private Boolean isAccepted = false;
     private ArrayList<Event> events = new ArrayList<>();
 
-    public Ride(Area source, Area destination, Passenger passenger) {
+    private int numberOfPassengers;
+
+    public Ride(Area source, Area destination, Passenger passenger, int numberOfPassengers) {
         this.source = source;
         this.passenger = passenger;
         this.destination = destination;
+        this.numberOfPassengers = numberOfPassengers;
         acceptedOffer = null;
     }
 
@@ -62,6 +65,10 @@ public class Ride {
 
     public void addEvent(Event event){
         events.add(event);
+    }
+
+    public int getNumberOfPassengers() {
+        return numberOfPassengers;
     }
 
     public String toString() {

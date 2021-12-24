@@ -11,4 +11,23 @@ public class Event {
     public void setName(EventName name){
         this.name = name;
     }
+
+    @Override
+    public String toString(){
+        String result = "";
+        if(name == EventName.addedPrice){
+            result += "Added Price: ";
+            
+        }else if(name == EventName.acceptedOffer){
+            result += "Accepted Offer: ";
+
+        }else if(name == EventName.arrivedToSource){
+            result += "Arrived To Source: ";
+
+        }else{
+            result += "Arrived To Destination: ";
+
+        }
+        return result;
+    }
 }
