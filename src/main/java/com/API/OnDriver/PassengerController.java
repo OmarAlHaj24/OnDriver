@@ -7,9 +7,6 @@ import java.util.List;
 
 @RestController
 public class PassengerController {
-
-    private Ride currentRide;
-    private ArrayList<Ride> pastRides;
     ListManager manager = ListManager.getInstance();
 
     @PostMapping("/passenger/request/{currentUsername}/{source}/{destination}/{numberOfPassengers}")
