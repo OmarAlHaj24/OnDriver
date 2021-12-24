@@ -54,4 +54,3 @@
 
 5 - Passenger accepts offers: http://localhost:8080/passenger/acceptOffers/(currentUsername)/(offerNum)
 
-
