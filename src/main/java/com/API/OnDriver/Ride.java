@@ -1,8 +1,6 @@
 package com.API.OnDriver;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -61,7 +59,7 @@ public class Ride {
             //Testing
             System.out.println("2 - " + destination.getLocation());
         }
-        if (this.getNumberOfPassengers() == 2) {
+        if (this.getNumberOfPassengers() >= 2) {
             offer.makeDiscount(5);
             //Testing
             System.out.println("3 - " + this.getNumberOfPassengers());
