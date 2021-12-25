@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1fb6be1-2f80-428c-9014-b42318b30075" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Passenger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Ride.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Ride.java" afterDir="false" />
-    </list>
+    <list default="true" id="f1fb6be1-2f80-428c-9014-b42318b30075" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +78,7 @@
       <workItem from="1640263406528" duration="5385000" />
       <workItem from="1640338889819" duration="2779000" />
       <workItem from="1640357559852" duration="5378000" />
-      <workItem from="1640426226323" duration="4048000" />
+      <workItem from="1640426226323" duration="4168000" />
     </task>
     <servers />
   </component>
