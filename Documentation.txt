@@ -4,6 +4,7 @@
     "mobileNumber":"01019354475",
     "email":"omaralhaj24@gmail.com",
     "password":"123secure"
+    "dateOfBirth":"2000-12-25"
 }
 
 2 - Register as driver: http://localhost:8080/register/driver
@@ -34,6 +35,8 @@
 3 - Get all system rides: http://localhost:8080/admin/getSystemRides
 
 4 - Get the events of a ride: http://localhost:8080/admin/getRideEvents/(idx)
+
+5 - Apply discount on rides headed to a certain area: http://localhost:8080/admin/applyDiscount/(areaName)
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 

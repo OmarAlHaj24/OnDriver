@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Area implements AreaSubject {
     private String location;
+    private boolean isDiscounted = false;
     ArrayList<Driver> drivers = new ArrayList<Driver>();
 
     public Area(String location) {
@@ -12,6 +13,14 @@ public class Area implements AreaSubject {
 
     public String getLocation() {
         return location;
+    }
+
+    public boolean isDiscounted(){
+        return isDiscounted;
+    }
+
+    public void setDiscounted(){
+        isDiscounted = true;
     }
 
     @Override

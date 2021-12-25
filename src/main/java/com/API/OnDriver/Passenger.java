@@ -3,16 +3,19 @@ package com.API.OnDriver;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Passenger extends User {
     private ArrayList<Ride> pastRides;
     private Ride currentRide;
+    private String dateOfBirth;
 
-    public Passenger(String username, String mobileNumber, String email, String password) {
+    public Passenger(String username, String mobileNumber, String email, String password, String dateOfBirth) {
         super(username, mobileNumber, email, password, UserStatus.activated);
         pastRides = new ArrayList<>();
         currentRide = null;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public void setPastRides(ArrayList<Ride> pastRides) {
@@ -94,6 +97,10 @@ public class Passenger extends User {
 
     public Ride getPastRide(int index) {
         return pastRides.get(index);
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
     @Override

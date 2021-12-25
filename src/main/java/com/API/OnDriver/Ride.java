@@ -1,6 +1,10 @@
 package com.API.OnDriver;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Ride {
     private Area source;
@@ -47,6 +51,21 @@ public class Ride {
     }
 
     public void addOffer(Offer offer) {
+        if(passenger.listPastRides().size() == 0){
+            offer.makeDiscount(10);
+        }
+        if(this.destination.isDiscounted()){
+            offer.makeDiscount(10);
+        }
+        if(this.getNumberOfPassengers() == 2){
+            offer.makeDiscount(5);
+        }
+        if(Calendar.DAY_OF_WEEK == 1 || Calendar.DAY_OF_WEEK == 7){
+            offer.makeDiscount(5);
+        }
+        if(passenger.getDateOfBirth().equals(LocalDate.now().toString())){
+            offer.makeDiscount(10);
+        }
         offers.add(offer);
     }
 
