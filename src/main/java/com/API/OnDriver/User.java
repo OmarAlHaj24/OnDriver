@@ -57,7 +57,7 @@ public abstract class User {
 
 
     public String toString() {
-        return "Username: " + getUsername() + " || " + "Mobile Number: " + getMobileNumber() + " || "  + "Email: " + getEmail() +
-                " || " + "User Status: " + getUserStatus()+" || ";
+        return "Username: " + getUsername() + " || " + "Mobile Number: " + getMobileNumber() + " || " + "Email: " + getEmail() +
+                " || " + "User Status: " + getUserStatus() + " || ";
     }
 }

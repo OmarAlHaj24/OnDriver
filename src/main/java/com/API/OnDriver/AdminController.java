@@ -61,12 +61,12 @@ public class AdminController {
     }
 
     @PostMapping("/admin/applyDiscount/{areaName}")
-    public String applyDiscount(@PathVariable String areaName){
+    public String applyDiscount(@PathVariable String areaName) {
         currentUser = IdentityManager.currentAdmin;
         if (IdentityManager.currentAdmin == null) {
             return "You have no access to this function";
         }
         currentUser.applyDiscount(manager.getArea(areaName));
-        return "A discount will be applied to all rides headed to" + areaName;
+        return "A discount will be applied to all rides headed to " + areaName;
     }
 }

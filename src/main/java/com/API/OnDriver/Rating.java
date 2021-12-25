@@ -17,7 +17,7 @@ public class Rating {
     }
 
     public boolean addRating(Ride ride, int rating) {
-        if(driverRatings.get(ride) == null){
+        if (driverRatings.get(ride) == null) {
             driverRatings.put(ride, rating);
             numberOfRatings++;
             ratingSum += rating;

@@ -3,7 +3,7 @@
     "username":"Omar",
     "mobileNumber":"01019354475",
     "email":"omaralhaj24@gmail.com",
-    "password":"123secure"
+    "password":"123secure",
     "dateOfBirth":"2000-12-25"
 }
 

@@ -51,20 +51,30 @@ public class Ride {
     }
 
     public void addOffer(Offer offer) {
-        if(passenger.listPastRides().size() == 0){
+        if (passenger.isFirstRide()) {
             offer.makeDiscount(10);
+            //Testing
+            System.out.println("1 - " + passenger.listPastRides().size());
         }
-        if(this.destination.isDiscounted()){
+        if (this.destination.isDiscounted()) {
             offer.makeDiscount(10);
+            //Testing
+            System.out.println("2 - " + destination.getLocation());
         }
-        if(this.getNumberOfPassengers() == 2){
+        if (this.getNumberOfPassengers() == 2) {
             offer.makeDiscount(5);
+            //Testing
+            System.out.println("3 - " + this.getNumberOfPassengers());
         }
-        if(Calendar.DAY_OF_WEEK == 1 || Calendar.DAY_OF_WEEK == 7){
+        if (Calendar.DAY_OF_WEEK == 1 || Calendar.DAY_OF_WEEK == 7) {
             offer.makeDiscount(5);
+            //Testing
+            System.out.println("4 - " + Calendar.DAY_OF_WEEK);
         }
-        if(passenger.getDateOfBirth().equals(LocalDate.now().toString())){
+        if (passenger.getDateOfBirth().substring(4).equals(LocalDate.now().toString().substring(4))) {
             offer.makeDiscount(10);
+            //Testing
+            System.out.println("5 - " + passenger.getDateOfBirth() + " " + LocalDate.now().toString());
         }
         offers.add(offer);
     }
@@ -74,7 +84,7 @@ public class Ride {
         ArrayList<String> offers_ = new ArrayList<>();
         for (int i = 0; i < offers.size(); i++) {
             flag = true;
-            offers_.add((i+1) + "- " + offers.get(i));
+            offers_.add((i + 1) + "- " + offers.get(i));
         }
         if (!flag) {
             offers_.add("No offers yet");

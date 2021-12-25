@@ -38,7 +38,7 @@ public class DriverController {
             temp.add("You're either not logged in or you have no access to this function");
             return temp;
         }
-        return driver.viewRides(areaNum-1);
+        return driver.viewRides(areaNum - 1);
     }
 
     @PostMapping("/driver/suggestOffer/{currentUsername}/{rideNum}/{offerPrice}")
@@ -47,7 +47,7 @@ public class DriverController {
         if (driver == null)
             return "You're either not logged in or you have no access to this function";
         Offer offer = new Offer(offerPrice, driver);
-        driver.suggestOffer(rideNum-1, offer);
+        driver.suggestOffer(rideNum - 1, offer);
         return "Your offer was sent successfully. Please wait for the passenger's response";
     }
 
@@ -63,25 +63,25 @@ public class DriverController {
     }
 
     @PostMapping("/driver/startRide/{currentUsername}")
-    public String startRide(@PathVariable String currentUsername){
+    public String startRide(@PathVariable String currentUsername) {
         Driver driver = IdentityManager.getDriver(currentUsername);
         if (driver == null)
             return "You're either not logged in or you have no access to this function";
-        if(driver.startRide()){
+        if (driver.startRide()) {
             return "Ride started successfully";
-        }else{
+        } else {
             return "You have no current rides";
         }
     }
 
     @PostMapping("/driver/endRide/{currentUsername}")
-    public String endRide(@PathVariable String currentUsername){
+    public String endRide(@PathVariable String currentUsername) {
         Driver driver = IdentityManager.getDriver(currentUsername);
         if (driver == null)
             return "You're either not logged in or you have no access to this function";
-        if(driver.endRide()){
+        if (driver.endRide()) {
             return "Ride ended successfully";
-        }else{
+        } else {
             return "You have no current rides";
         }
     }

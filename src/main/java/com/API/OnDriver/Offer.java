@@ -19,11 +19,11 @@ public class Offer {
         this.price = price;
     }
 
-    public double getDiscountedPrice(){
+    public double getDiscountedPrice() {
         return discountedPrice;
     }
 
-    public void makeDiscount(int percentage){
+    public void makeDiscount(int percentage) {
         discountedPrice -= 1.0 * price * percentage / 100;
         discountedPrice = Math.max(0.0, discountedPrice);
     }

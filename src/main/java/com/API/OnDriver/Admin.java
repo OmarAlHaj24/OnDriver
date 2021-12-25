@@ -57,7 +57,7 @@ public class Admin extends User {
         return events;
     }
 
-    public void applyDiscount(Area area){
+    public void applyDiscount(Area area) {
         area.setDiscounted();
     }
 }

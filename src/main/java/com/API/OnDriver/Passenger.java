@@ -85,7 +85,7 @@ public class Passenger extends User {
         boolean flag = false;
         ArrayList<String> rides = new ArrayList<>();
         for (int i = 0; i < pastRides.size(); i++) {
-            String temp = (i+1) + "- " + pastRides.get(i).toStringPassenger();
+            String temp = (i + 1) + "- " + pastRides.get(i).toStringPassenger();
             rides.add(temp);
             flag = true;
         }
@@ -93,6 +93,10 @@ public class Passenger extends User {
             rides.add("There's no past rides");
         }
         return rides;
+    }
+
+    public boolean isFirstRide() {
+        return (pastRides.size() == 0);
     }
 
     public Ride getPastRide(int index) {

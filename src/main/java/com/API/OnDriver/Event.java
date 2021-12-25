@@ -7,26 +7,26 @@ import java.util.Map;
 
 public class Event {
     private EventName name;
-    private Map < String, String > attributes = new LinkedHashMap <> ( );
+    private Map<String, String> attributes = new LinkedHashMap<>();
 
-    public void addAttribute ( String attribute , String value ) {
-        attributes.put ( attribute , value );
+    public void addAttribute(String attribute, String value) {
+        attributes.put(attribute, value);
     }
 
-    public void setName ( EventName name ) {
+    public void setName(EventName name) {
         this.name = name;
     }
 
     @Override
-    public String toString ( ) {
+    public String toString() {
         String result = "";
-        if ( name == EventName.addedPrice ) {
+        if (name == EventName.addedPrice) {
             result += "Added Price: ";
 
-        } else if ( name == EventName.acceptedOffer ) {
+        } else if (name == EventName.acceptedOffer) {
             result += "Accepted Offer: ";
 
-        } else if ( name == EventName.arrivedToSource ) {
+        } else if (name == EventName.arrivedToSource) {
             result += "Arrived To Source: ";
 
         } else {
@@ -34,11 +34,11 @@ public class Event {
 
         }
         boolean flag = false;
-        for ( Map.Entry < String, String > set : attributes.entrySet ( ) ) {
-            if ( flag ) {
+        for (Map.Entry<String, String> set : attributes.entrySet()) {
+            if (flag) {
                 result += " || ";
             }
-            result += set.getKey ( ) + ": " + set.getValue ( );
+            result += set.getKey() + ": " + set.getValue();
             flag = true;
         }
 
