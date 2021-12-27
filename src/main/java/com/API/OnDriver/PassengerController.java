@@ -39,8 +39,8 @@ public class PassengerController {
         if (passenger == null) {
             return "You're either not logged in or you have no access to this function";
         }
-        Ride temp = passenger.getPastRide(rideIdx-1);
-        if (passenger.rateRide(temp, rate)){
+        Ride temp = passenger.getPastRide(rideIdx - 1);
+        if (passenger.rateRide(temp, rate)) {
             return "Ride was rated successfully";
         }
         return "You have already rated this ride or you've entered a wrong number";
@@ -64,7 +64,7 @@ public class PassengerController {
         if (passenger == null) {
             return "You're either not logged in or you have no access to this function";
         }
-        if (passenger.acceptOffer(offerNum-1)) {
+        if (passenger.acceptOffer(offerNum - 1)) {
             return "Offer is accepted successfully";
         }
         return "Offer was not accepted, you may have entered a wrong offer number";

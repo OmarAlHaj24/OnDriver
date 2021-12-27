@@ -16,14 +16,12 @@ public class Rating {
         return 1.0 * ratingSum / numberOfRatings;
     }
 
-    public boolean addRating(Ride ride, int rating) {
+    public void addRating(Ride ride, int rating) {
         if (driverRatings.get(ride) == null) {
             driverRatings.put(ride, rating);
             numberOfRatings++;
             ratingSum += rating;
-            return true;
         }
-        return false;
     }
 
     public ArrayList<String> viewAllRating() {

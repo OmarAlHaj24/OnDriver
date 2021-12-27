@@ -18,18 +18,6 @@ public class Passenger extends User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public void setPastRides(ArrayList<Ride> pastRides) {
-        this.pastRides = pastRides;
-    }
-
-    public void setCurrentRide(Ride currentRide) {
-        this.currentRide = currentRide;
-    }
-
-    public Ride getCurrentRide() {
-        return currentRide;
-    }
-
     public void requestRide(Ride ride) {
         ListManager.getInstance().addRide(ride);
         ride.getSource().notifyDrivers(ride);
@@ -48,16 +36,6 @@ public class Passenger extends User {
         return true;
     }
 
-    public double getRating(String username) {
-        double avgRating = -1;
-        for (int i = 0; i < currentRide.getOffers().size(); i++) {
-            if (currentRide.getOffers().get(i).getDriver().getUsername().equals(username)) {
-                avgRating = currentRide.getOffers().get(i).getDriver().getRating().getAverageRating();
-            }
-        }
-        return avgRating;
-    }
-
     public ArrayList<String> checkOffers() {
         return currentRide.viewOffers();
     }
@@ -68,12 +46,6 @@ public class Passenger extends User {
         }
         Offer accepted = currentRide.getOffers().get(offerNum);
         currentRide.setAcceptedOffer(accepted);
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//        LocalDateTime now = LocalDateTime.now();
-//        Event event = new Event();
-//        event.setName(EventName.acceptedOffer);
-//        event.addAttribute("Time", dtf.format(now));
-//        event.addAttribute("Passenger Name", getUsername());
         currentRide.addEvent(new AcceptOfferEvent(this));
         accepted.getDriver().setCurrentRide(currentRide);
         pastRides.add(currentRide);

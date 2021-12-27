@@ -1,21 +1,15 @@
 package com.API.OnDriver;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class Ride {
     private Area source;
-
-
     private Area destination;
     private Passenger passenger;
     private Offer acceptedOffer;
     private ArrayList<Offer> offers = new ArrayList<>();
     private Boolean isAccepted = false;
     private ArrayList<Event> events = new ArrayList<>();
-
     private int numberOfPassengers;
 
     public Ride(Area source, Area destination, Passenger passenger, int numberOfPassengers) {

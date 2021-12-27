@@ -57,13 +57,6 @@ public class Driver extends User implements DriverObserver {
     public void suggestOffer(int idx, Offer offer) {
         Ride ride = rides.get(idx);
         ride.addOffer(offer);
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//        LocalDateTime now = LocalDateTime.now();
-//        Event event = new Event();
-//        event.setName(EventName.addedPrice);
-//        event.addAttribute("Time", dtf.format(now));
-//        event.addAttribute("Driver Name", getUsername());
-//        event.addAttribute("Offered Price", Double.toString(offer.getPrice()));
         ride.addEvent(new MakeOfferEvent(this, offer));
     }
 
@@ -111,13 +104,6 @@ public class Driver extends User implements DriverObserver {
         if (currentRide == null) {
             return false;
         }
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//        LocalDateTime now = LocalDateTime.now();
-//        Event event = new Event();
-//        event.setName(EventName.arrivedToSource);
-//        event.addAttribute("Time", dtf.format(now));
-//        event.addAttribute("Driver Name", getUsername());
-//        event.addAttribute("Passenger Name", currentRide.getPassenger().getUsername());
         currentRide.addEvent(new SourceEvent(this, currentRide));
         return true;
     }
@@ -126,13 +112,6 @@ public class Driver extends User implements DriverObserver {
         if (currentRide == null) {
             return false;
         }
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//        LocalDateTime now = LocalDateTime.now();
-//        Event event = new Event();
-//        event.setName(EventName.arrivedToDestination);
-//        event.addAttribute("Time", dtf.format(now));
-//        event.addAttribute("Driver Name", getUsername());
-//        event.addAttribute("Passenger Name", currentRide.getPassenger().getUsername());
         currentRide.addEvent(new DestinationEvent(this, currentRide));
         currentRide = null;
         return true;

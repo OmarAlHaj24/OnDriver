@@ -6,8 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="f1fb6be1-2f80-428c-9014-b42318b30075" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Menu.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Offer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Passenger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/PassengerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/PassengerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Rating.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Ride.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/Ride.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/SourceEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/SourceEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/API/OnDriver/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +74,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OnDriverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="OnDriver" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.API.OnDriver.OnDriverApplication" />
@@ -94,6 +112,7 @@
       <workItem from="1640426226323" duration="4168000" />
       <workItem from="1640606774136" duration="3446000" />
       <workItem from="1640610338539" duration="410000" />
+      <workItem from="1640625484431" duration="498000" />
     </task>
     <servers />
   </component>
