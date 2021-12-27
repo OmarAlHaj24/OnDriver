@@ -7,6 +7,8 @@ import java.util.Date;
 
 public class Ride {
     private Area source;
+
+
     private Area destination;
     private Passenger passenger;
     private Offer acceptedOffer;
@@ -26,6 +28,10 @@ public class Ride {
 
     public Area getSource() {
         return source;
+    }
+
+    public Area getDestination() {
+        return destination;
     }
 
     public Passenger getPassenger() {
@@ -50,21 +56,7 @@ public class Ride {
     }
 
     public void addOffer(Offer offer) {
-        if (passenger.isFirstRide()) {
-            offer.makeDiscount(10);
-        }
-        if (this.destination.isDiscounted()) {
-            offer.makeDiscount(10);
-        }
-        if (this.getNumberOfPassengers() >= 2) {
-            offer.makeDiscount(5);
-        }
-        if (IDateTime.getInstance().isWeekend(new Date())) {
-            offer.makeDiscount(5);
-        }
-        if (passenger.getDateOfBirth().substring(4).equals(LocalDate.now().toString().substring(4))) {
-            offer.makeDiscount(10);
-        }
+        offer.applyDiscount(this);
         offers.add(offer);
     }
 

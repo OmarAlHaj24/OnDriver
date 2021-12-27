@@ -1,5 +1,8 @@
 package com.API.OnDriver;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Offer {
     private double price;
     private double discountedPrice;
@@ -26,6 +29,24 @@ public class Offer {
     public void makeDiscount(int percentage) {
         discountedPrice -= 1.0 * price * percentage / 100;
         discountedPrice = Math.max(0.0, discountedPrice);
+    }
+
+    public void applyDiscount(Ride ride) {
+        if (ride.getPassenger().isFirstRide()) {
+            makeDiscount(10);
+        }
+        if (ride.getDestination().isDiscounted()) {
+            makeDiscount(10);
+        }
+        if (ride.getNumberOfPassengers() >= 2) {
+            makeDiscount(5);
+        }
+        if (IDateTime.getInstance().isWeekend(new Date())) {
+            makeDiscount(5);
+        }
+        if (ride.getPassenger().getDateOfBirth().substring(4).equals(LocalDate.now().toString().substring(4))) {
+            makeDiscount(10);
+        }
     }
 
     public Driver getDriver() {
