@@ -56,15 +56,15 @@ public class Driver extends User implements DriverObserver {
 
     public void suggestOffer(int idx, Offer offer) {
         Ride ride = rides.get(idx);
-        ride.addOffer(offer);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        Event event = new Event();
-        event.setName(EventName.addedPrice);
-        event.addAttribute("Time", dtf.format(now));
-        event.addAttribute("Driver Name", getUsername());
-        event.addAttribute("Offered Price", Double.toString(offer.getPrice()));
-        ride.addEvent(event);
+//        ride.addOffer(offer);
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//        LocalDateTime now = LocalDateTime.now();
+//        Event event = new Event();
+//        event.setName(EventName.addedPrice);
+//        event.addAttribute("Time", dtf.format(now));
+//        event.addAttribute("Driver Name", getUsername());
+//        event.addAttribute("Offered Price", Double.toString(offer.getPrice()));
+        ride.addEvent(new MakeOfferEvent(this, offer));
     }
 
     public ArrayList<String> viewRides(int index) {
@@ -107,42 +107,42 @@ public class Driver extends User implements DriverObserver {
         return areas;
     }
 
-    public boolean startRide(){
-        if(currentRide == null){
+    public boolean startRide() {
+        if (currentRide == null) {
             return false;
         }
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        Event event = new Event();
-        event.setName(EventName.arrivedToSource);
-        event.addAttribute("Time", dtf.format(now));
-        event.addAttribute("Driver Name", getUsername());
-        event.addAttribute("Passenger Name", currentRide.getPassenger().getUsername());
-        currentRide.addEvent ( event );
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//        LocalDateTime now = LocalDateTime.now();
+//        Event event = new Event();
+//        event.setName(EventName.arrivedToSource);
+//        event.addAttribute("Time", dtf.format(now));
+//        event.addAttribute("Driver Name", getUsername());
+//        event.addAttribute("Passenger Name", currentRide.getPassenger().getUsername());
+        currentRide.addEvent(new SourceEvent(this, currentRide));
         return true;
     }
 
-    public boolean endRide(){
-        if(currentRide == null){
+    public boolean endRide() {
+        if (currentRide == null) {
             return false;
         }
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        Event event = new Event();
-        event.setName(EventName.arrivedToDestination);
-        event.addAttribute("Time", dtf.format(now));
-        event.addAttribute("Driver Name", getUsername());
-        event.addAttribute("Passenger Name", currentRide.getPassenger().getUsername());
-        currentRide.addEvent ( event );
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//        LocalDateTime now = LocalDateTime.now();
+//        Event event = new Event();
+//        event.setName(EventName.arrivedToDestination);
+//        event.addAttribute("Time", dtf.format(now));
+//        event.addAttribute("Driver Name", getUsername());
+//        event.addAttribute("Passenger Name", currentRide.getPassenger().getUsername());
+        currentRide.addEvent(new DestinationEvent(this, currentRide));
         currentRide = null;
         return true;
     }
 
-    public void setCurrentRide(Ride ride){
+    public void setCurrentRide(Ride ride) {
         currentRide = ride;
     }
 
-    public Ride getCurrentRide(){
+    public Ride getCurrentRide() {
         return currentRide;
     }
 

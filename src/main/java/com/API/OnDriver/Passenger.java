@@ -68,13 +68,13 @@ public class Passenger extends User {
         }
         Offer accepted = currentRide.getOffers().get(offerNum);
         currentRide.setAcceptedOffer(accepted);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        Event event = new Event();
-        event.setName(EventName.acceptedOffer);
-        event.addAttribute("Time", dtf.format(now));
-        event.addAttribute("Passenger Name", getUsername());
-        currentRide.addEvent(event);
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//        LocalDateTime now = LocalDateTime.now();
+//        Event event = new Event();
+//        event.setName(EventName.acceptedOffer);
+//        event.addAttribute("Time", dtf.format(now));
+//        event.addAttribute("Passenger Name", getUsername());
+        currentRide.addEvent(new AcceptOfferEvent(this));
         accepted.getDriver().setCurrentRide(currentRide);
         pastRides.add(currentRide);
         currentRide = null;
