@@ -56,7 +56,7 @@ public class Driver extends User implements DriverObserver {
 
     public void suggestOffer(int idx, Offer offer) {
         Ride ride = rides.get(idx);
-//        ride.addOffer(offer);
+        ride.addOffer(offer);
 //        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 //        LocalDateTime now = LocalDateTime.now();
 //        Event event = new Event();

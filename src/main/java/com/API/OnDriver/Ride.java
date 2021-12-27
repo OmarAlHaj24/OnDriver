@@ -3,6 +3,7 @@ package com.API.OnDriver;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Ride {
     private Area source;
@@ -51,28 +52,18 @@ public class Ride {
     public void addOffer(Offer offer) {
         if (passenger.isFirstRide()) {
             offer.makeDiscount(10);
-            //Testing
-            System.out.println("1 - " + passenger.listPastRides().size());
         }
         if (this.destination.isDiscounted()) {
             offer.makeDiscount(10);
-            //Testing
-            System.out.println("2 - " + destination.getLocation());
         }
         if (this.getNumberOfPassengers() >= 2) {
             offer.makeDiscount(5);
-            //Testing
-            System.out.println("3 - " + this.getNumberOfPassengers());
         }
-        if (Calendar.DAY_OF_WEEK == 1 || Calendar.DAY_OF_WEEK == 7) {
+        if (IDateTime.getInstance().isWeekend(new Date())) {
             offer.makeDiscount(5);
-            //Testing
-            System.out.println("4 - " + Calendar.DAY_OF_WEEK);
         }
         if (passenger.getDateOfBirth().substring(4).equals(LocalDate.now().toString().substring(4))) {
             offer.makeDiscount(10);
-            //Testing
-            System.out.println("5 - " + passenger.getDateOfBirth() + " " + LocalDate.now().toString());
         }
         offers.add(offer);
     }

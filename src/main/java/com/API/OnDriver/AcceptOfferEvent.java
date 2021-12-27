@@ -5,10 +5,8 @@ import java.time.format.DateTimeFormatter;
 
 public class AcceptOfferEvent extends Event {
     AcceptOfferEvent(Passenger passenger) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
         setName(EventName.acceptedOffer);
-        addAttribute("Time", dtf.format(now));
+        addAttribute("Time", IDateTime.getInstance().getDateTime());
         addAttribute("Passenger Name", passenger.getUsername());
     }
 }
