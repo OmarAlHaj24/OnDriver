@@ -1,8 +1,13 @@
-package com.API.OnDriver;
+package CustomerSubsystem;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import EventSubsystem.DestinationEvent;
+import EventSubsystem.MakeOfferEvent;
+import EventSubsystem.SourceEvent;
+import RideSubsystem.Area;
+import RideSubsystem.Offer;
+import RideSubsystem.Ride;
+import EventSubsystem.*;
+
 import java.util.*;
 
 public class Driver extends User implements DriverObserver {

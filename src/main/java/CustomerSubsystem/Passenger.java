@@ -1,10 +1,11 @@
-package com.API.OnDriver;
+package CustomerSubsystem;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import RideSubsystem.Offer;
+import RideSubsystem.Ride;
+import EventSubsystem.AcceptOfferEvent;
+import DataSubsystem.ListManager;
+
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class Passenger extends User {
     private ArrayList<Ride> pastRides;

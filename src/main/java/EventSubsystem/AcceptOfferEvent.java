@@ -1,7 +1,6 @@
-package com.API.OnDriver;
+package EventSubsystem;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import CustomerSubsystem.Passenger;
 
 public class AcceptOfferEvent extends Event {
     AcceptOfferEvent(Passenger passenger) {

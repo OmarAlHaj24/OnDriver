@@ -1,6 +1,6 @@
-package com.API.OnDriver;
+package RideSubsystem;
 
-import java.util.ArrayList;
+import CustomerSubsystem.Driver;
 
 public interface AreaSubject {
     public void subscribe(Driver driver);

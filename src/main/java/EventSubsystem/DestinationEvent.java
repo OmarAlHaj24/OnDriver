@@ -1,7 +1,10 @@
-package com.API.OnDriver;
+package EventSubsystem;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import CustomerSubsystem.Driver;
+import EventSubsystem.Event;
+import EventSubsystem.EventName;
+import EventSubsystem.IDateTime;
+import RideSubsystem.Ride;
 
 public class DestinationEvent extends Event {
     DestinationEvent(Driver driver, Ride ride) {

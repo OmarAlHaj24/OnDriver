@@ -1,7 +1,7 @@
-package com.API.OnDriver;
+package EventSubsystem;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import CustomerSubsystem.Driver;
+import RideSubsystem.Offer;
 
 public class MakeOfferEvent extends Event {
     MakeOfferEvent(Driver driver, Offer offer) {
