@@ -4,7 +4,7 @@ import CustomerSubsystem.Driver;
 import RideSubsystem.Offer;
 
 public class MakeOfferEvent extends Event {
-    MakeOfferEvent(Driver driver, Offer offer) {
+    public MakeOfferEvent(Driver driver, Offer offer) {
         setName(EventName.addedPrice);
         addAttribute("Time", IDateTime.getInstance().getDateTime());
         addAttribute("Driver Name", driver.getUsername());

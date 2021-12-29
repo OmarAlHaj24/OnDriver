@@ -7,7 +7,7 @@ import EventSubsystem.IDateTime;
 import RideSubsystem.Ride;
 
 public class SourceEvent extends Event {
-    SourceEvent(Driver driver, Ride ride) {
+    public SourceEvent(Driver driver, Ride ride) {
         setName(EventName.arrivedToSource);
         addAttribute("Time", IDateTime.getInstance().getDateTime());
         addAttribute("Driver Name", driver.getUsername());
