@@ -171,17 +171,17 @@ public class ListManager implements DataManager {
     }
 
     @Override
-    public ArrayList<Ride> getAllRides(){
+    public ArrayList<Ride> getAllRides() {
         return listOfRides;
     }
 
     @Override
-    public Ride getRide(int idx){
+    public Ride getRide(int idx) {
         return listOfRides.get(idx - 1);
     }
 
     @Override
-    public void addRide(Ride ride){
+    public void addRide(Ride ride) {
         listOfRides.add(ride);
     }
 }

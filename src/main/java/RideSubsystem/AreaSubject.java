@@ -1,5 +1,4 @@
 package RideSubsystem;
-
 import CustomerSubsystem.Driver;
 
 public interface AreaSubject {
