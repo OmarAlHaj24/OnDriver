@@ -1,7 +1,7 @@
-package EventSubsystem;
+package com.API.OnDriver.EventSubsystem;
 
-import CustomerSubsystem.Driver;
-import RideSubsystem.Ride;
+import com.API.OnDriver.CustomerSubsystem.Driver;
+import com.API.OnDriver.RideSubsystem.Ride;
 
 public class DestinationEvent extends Event {
     public DestinationEvent(Driver driver, Ride ride) {

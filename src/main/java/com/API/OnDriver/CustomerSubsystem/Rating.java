@@ -1,6 +1,6 @@
-package CustomerSubsystem;
+package com.API.OnDriver.CustomerSubsystem;
 
-import RideSubsystem.Ride;
+import com.API.OnDriver.RideSubsystem.Ride;
 
 import java.util.ArrayList;
 import java.util.HashMap;

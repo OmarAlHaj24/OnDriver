@@ -1,4 +1,4 @@
-package EventSubsystem;
+package com.API.OnDriver.EventSubsystem;
 
 public enum EventName {
     addedPrice,

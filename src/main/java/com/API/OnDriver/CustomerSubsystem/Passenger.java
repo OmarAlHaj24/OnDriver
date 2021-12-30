@@ -1,9 +1,9 @@
-package CustomerSubsystem;
+package com.API.OnDriver.CustomerSubsystem;
 
-import RideSubsystem.Offer;
-import RideSubsystem.Ride;
-import EventSubsystem.AcceptOfferEvent;
-import DataSubsystem.ListManager;
+import com.API.OnDriver.RideSubsystem.Offer;
+import com.API.OnDriver.RideSubsystem.Ride;
+import com.API.OnDriver.EventSubsystem.AcceptOfferEvent;
+import com.API.OnDriver.DataSubsystem.ListManager;
 
 import java.util.ArrayList;
 

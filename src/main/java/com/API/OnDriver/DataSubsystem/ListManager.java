@@ -1,11 +1,11 @@
-package DataSubsystem;
+package com.API.OnDriver.DataSubsystem;
 
-import CustomerSubsystem.Admin;
-import CustomerSubsystem.Driver;
-import CustomerSubsystem.Passenger;
-import CustomerSubsystem.User;
-import RideSubsystem.Area;
-import RideSubsystem.Ride;
+import com.API.OnDriver.CustomerSubsystem.Admin;
+import com.API.OnDriver.CustomerSubsystem.Driver;
+import com.API.OnDriver.CustomerSubsystem.Passenger;
+import com.API.OnDriver.CustomerSubsystem.User;
+import com.API.OnDriver.RideSubsystem.Area;
+import com.API.OnDriver.RideSubsystem.Ride;
 
 import java.util.ArrayList;
 import java.util.List;

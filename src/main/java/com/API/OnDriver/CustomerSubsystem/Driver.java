@@ -1,11 +1,11 @@
-package CustomerSubsystem;
+package com.API.OnDriver.CustomerSubsystem;
 
-import EventSubsystem.DestinationEvent;
-import EventSubsystem.MakeOfferEvent;
-import EventSubsystem.SourceEvent;
-import RideSubsystem.Area;
-import RideSubsystem.Offer;
-import RideSubsystem.Ride;
+import com.API.OnDriver.EventSubsystem.DestinationEvent;
+import com.API.OnDriver.EventSubsystem.MakeOfferEvent;
+import com.API.OnDriver.EventSubsystem.SourceEvent;
+import com.API.OnDriver.RideSubsystem.Area;
+import com.API.OnDriver.RideSubsystem.Offer;
+import com.API.OnDriver.RideSubsystem.Ride;
 
 import java.util.*;
 

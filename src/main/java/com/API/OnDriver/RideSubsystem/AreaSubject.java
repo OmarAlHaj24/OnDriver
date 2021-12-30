@@ -1,5 +1,5 @@
-package RideSubsystem;
-import CustomerSubsystem.Driver;
+package com.API.OnDriver.RideSubsystem;
+import com.API.OnDriver.CustomerSubsystem.Driver;
 
 public interface AreaSubject {
     public void subscribe(Driver driver);

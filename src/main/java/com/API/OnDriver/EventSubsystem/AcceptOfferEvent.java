@@ -1,6 +1,6 @@
-package EventSubsystem;
+package com.API.OnDriver.EventSubsystem;
 
-import CustomerSubsystem.Passenger;
+import com.API.OnDriver.CustomerSubsystem.Passenger;
 
 public class AcceptOfferEvent extends Event {
     public AcceptOfferEvent(Passenger passenger) {

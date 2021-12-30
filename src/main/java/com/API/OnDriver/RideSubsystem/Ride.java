@@ -1,7 +1,7 @@
-package RideSubsystem;
+package com.API.OnDriver.RideSubsystem;
 
-import EventSubsystem.Event;
-import CustomerSubsystem.Passenger;
+import com.API.OnDriver.EventSubsystem.Event;
+import com.API.OnDriver.CustomerSubsystem.Passenger;
 
 import java.util.ArrayList;
 

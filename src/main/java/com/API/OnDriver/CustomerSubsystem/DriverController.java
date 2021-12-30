@@ -1,8 +1,8 @@
-package CustomerSubsystem;
+package com.API.OnDriver.CustomerSubsystem;
 
-import RideSubsystem.Area;
-import RideSubsystem.Offer;
-import DataSubsystem.ListManager;
+import com.API.OnDriver.RideSubsystem.Area;
+import com.API.OnDriver.RideSubsystem.Offer;
+import com.API.OnDriver.DataSubsystem.ListManager;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;

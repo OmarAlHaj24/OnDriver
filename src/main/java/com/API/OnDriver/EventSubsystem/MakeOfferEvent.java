@@ -1,7 +1,7 @@
-package EventSubsystem;
+package com.API.OnDriver.EventSubsystem;
 
-import CustomerSubsystem.Driver;
-import RideSubsystem.Offer;
+import com.API.OnDriver.CustomerSubsystem.Driver;
+import com.API.OnDriver.RideSubsystem.Offer;
 
 public class MakeOfferEvent extends Event {
     public MakeOfferEvent(Driver driver, Offer offer) {
